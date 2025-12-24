@@ -1,25 +1,30 @@
 import { Palette, Code, Lightbulb, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const skills = [
   {
     icon: Palette,
     title: "UI Design",
     description: "Creating visually stunning interfaces that captivate and engage users.",
+    link: "/skills/ui-design",
   },
   {
     icon: Lightbulb,
     title: "UX Strategy",
     description: "Research-driven design decisions that solve real user problems.",
+    link: "/skills/ux-strategy",
   },
   {
     icon: Code,
     title: "Development",
     description: "Bringing designs to life with clean, performant code.",
+    link: "/skills/development",
   },
   {
     icon: Zap,
     title: "Prototyping",
     description: "Rapid iteration with interactive prototypes to validate ideas.",
+    link: "/skills/prototyping",
   },
 ];
 
@@ -34,7 +39,8 @@ const About = () => {
               Designing with <span className="gradient-text">Purpose</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-6 opacity-0 animate-fade-up animation-delay-200">
-              I'm a passionate UI/UX designer with over 5 years of experience creating 
+              Hi, I'm <span className="font-semibold text-foreground">Emenike Precious</span> — a passionate 
+              UI/UX Designer & Product Designer with over 5 years of experience creating 
               digital products that blend beauty with functionality. My approach centers 
               on understanding users deeply and crafting experiences that feel intuitive 
               and delightful.
@@ -65,17 +71,18 @@ const About = () => {
           {/* Skills Grid */}
           <div className="grid grid-cols-2 gap-4">
             {skills.map((skill, index) => (
-              <div
+              <Link
                 key={skill.title}
-                className="glass-card rounded-2xl p-6 hover-lift opacity-0 animate-fade-up"
+                to={skill.link}
+                className="glass-card rounded-2xl p-6 hover-lift opacity-0 animate-fade-up cursor-pointer group"
                 style={{ animationDelay: `${index * 100 + 200}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <skill.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{skill.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">{skill.title}</h3>
                 <p className="text-sm text-muted-foreground">{skill.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
