@@ -60,6 +60,24 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Environment Variables
+
+**Currently none required!** This is a pure frontend project with no external API dependencies.
+
+If you add backend features later (via Lovable Cloud), you may need:
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_SUPABASE_URL` | Supabase project URL | Only if using Cloud/Supabase |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anonymous key | Only if using Cloud/Supabase |
+
+For local development with Cloud features, create a `.env.local` file:
+
+```sh
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
