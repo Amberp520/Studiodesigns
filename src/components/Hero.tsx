@@ -45,12 +45,16 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up animation-delay-600">
-            <Button variant="gradient" size="xl">
-              View My Work
-            </Button>
-            <Button variant="glass" size="xl">
-              Read the Blog
-            </Button>
+            <a href="#work">
+              <Button variant="gradient" size="xl">
+                View My Work
+              </Button>
+            </a>
+            <a href="#blog">
+              <Button variant="glass" size="xl">
+                Read the Blog
+              </Button>
+            </a>
           </div>
 
           {/* Scroll Indicator */}
