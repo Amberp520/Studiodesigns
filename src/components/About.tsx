@@ -1,5 +1,6 @@
 import { Palette, Code, Lightbulb, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const skills = [
   {
@@ -28,6 +29,17 @@ const skills = [
   },
 ];
 
+const AnimatedStat = ({ end, label }: { end: number; label: string }) => {
+  const { count, ref } = useCountUp({ end, duration: 2000 });
+  
+  return (
+    <div ref={ref}>
+      <div className="text-3xl md:text-4xl font-bold gradient-text">{count}+</div>
+      <p className="text-sm text-muted-foreground">{label}</p>
+    </div>
+  );
+};
+
 const About = () => {
   return (
     <section id="about" className="py-24 relative">
@@ -53,18 +65,9 @@ const About = () => {
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 opacity-0 animate-fade-up animation-delay-600">
-              <div>
-                <div className="text-3xl md:text-4xl font-bold gradient-text">50+</div>
-                <p className="text-sm text-muted-foreground">Projects Completed</p>
-              </div>
-              <div>
-                <div className="text-3xl md:text-4xl font-bold gradient-text">5+</div>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
-              </div>
-              <div>
-                <div className="text-3xl md:text-4xl font-bold gradient-text">30+</div>
-                <p className="text-sm text-muted-foreground">Happy Clients</p>
-              </div>
+              <AnimatedStat end={50} label="Projects Completed" />
+              <AnimatedStat end={5} label="Years Experience" />
+              <AnimatedStat end={30} label="Happy Clients" />
             </div>
           </div>
 
@@ -77,8 +80,8 @@ const About = () => {
                 className="glass-card rounded-2xl p-6 hover-lift opacity-0 animate-fade-up cursor-pointer group"
                 style={{ animationDelay: `${index * 100 + 200}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <skill.icon className="w-6 h-6 text-primary-foreground" />
+                <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <skill.icon className="w-6 h-6 text-primary-foreground group-hover:animate-pulse" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">{skill.title}</h3>
                 <p className="text-sm text-muted-foreground">{skill.description}</p>

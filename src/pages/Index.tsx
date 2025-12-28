@@ -6,6 +6,7 @@ import BlogSection from "@/components/BlogSection";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const Index = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <ScrollProgress />
     </div>
   );
 };
