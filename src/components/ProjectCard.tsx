@@ -14,7 +14,7 @@ const ProjectCard = ({ title, category, image, index }: ProjectCardProps) => {
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Image */}
-      <div className="aspect-[4/3] overflow-hidden">
+      <div className="aspect-[3/2] overflow-hidden">
         <img
           src={image}
           alt={title}

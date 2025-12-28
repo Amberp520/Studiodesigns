@@ -1,4 +1,4 @@
-import { ArrowDown, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -50,21 +50,14 @@ const Hero = () => {
                 View My Work
               </Button>
             </a>
-            <a href="#blog">
-              <Button variant="glass" size="xl">
-                Read the Blog
-              </Button>
-            </a>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in animation-delay-600">
             <a 
-              href="#work" 
-              className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              href="https://wa.me/2349165920038?text=Hello%2C%20I%20am%20interested%20in%20your%20work.%20My%20name%20is%20"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <span className="text-sm">Scroll to explore</span>
-              <ArrowDown className="w-5 h-5 animate-bounce" />
+              <Button variant="glass" size="xl">
+                Let's Talk
+              </Button>
             </a>
           </div>
         </div>
