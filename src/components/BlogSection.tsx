@@ -9,6 +9,7 @@ const blogPosts = [
     date: "Dec 18, 2024",
     readTime: "5 min read",
     category: "Design Systems",
+    slug: "design-systems",
   },
   {
     title: "UX Research Methods That Actually Work",
@@ -16,6 +17,7 @@ const blogPosts = [
     date: "Dec 12, 2024",
     readTime: "7 min read",
     category: "UX Research",
+    slug: "ux-research",
   },
   {
     title: "Motion Design: Adding Life to Interfaces",
@@ -23,6 +25,7 @@ const blogPosts = [
     date: "Dec 5, 2024",
     readTime: "6 min read",
     category: "Animation",
+    slug: "motion-design",
   },
 ];
 
@@ -30,7 +33,7 @@ const BlogSection = () => {
   return (
     <section id="blog" className="py-24 relative">
       {/* Background Accent */}
-      <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-gradient-pink/5 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-primary/5 to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -61,6 +64,7 @@ const BlogSection = () => {
               readTime={post.readTime}
               category={post.category}
               index={index}
+              slug={post.slug}
             />
           ))}
         </div>

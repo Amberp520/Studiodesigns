@@ -1,18 +1,22 @@
-import { Mail, Twitter, Linkedin, Github } from "lucide-react";
+import { MessageCircle, Twitter, Linkedin, Github, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 
 const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Instagram, href: "https://www.instagram.com/amberprecious998/", label: "Instagram" },
+  { icon: Linkedin, href: "https://linkedin.com/in/emenikeprecious", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/emenikeprecious", label: "GitHub" },
+  { icon: Twitter, href: "https://twitter.com/emenikeprecious", label: "Twitter" },
 ];
 
 const Contact = () => {
+  const whatsappMessage = encodeURIComponent("Hello, I am interested in your work. My name is ");
+  const whatsappLink = `https://wa.me/2349165920038?text=${whatsappMessage}`;
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-gradient-purple/10 via-gradient-red/5 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-primary/10 via-primary/5 to-transparent" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -29,10 +33,12 @@ const Contact = () => {
 
           {/* CTA Button */}
           <div className="opacity-0 animate-fade-up animation-delay-400">
-            <Button variant="gradient" size="xl" className="group glow">
-              <Mail className="w-5 h-5" />
-              hello@studio.design
-            </Button>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <Button variant="gradient" size="xl" className="group glow">
+                <MessageCircle className="w-5 h-5" />
+                Let's Talk on WhatsApp
+              </Button>
+            </a>
           </div>
 
           {/* Divider */}
@@ -48,6 +54,8 @@ const Contact = () => {
               <a
                 key={social.label}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
                 aria-label={social.label}
               >
