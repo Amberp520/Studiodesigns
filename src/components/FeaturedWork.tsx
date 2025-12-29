@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Health & Wellness App",
     category: "Mobile Design",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&h=600&fit=crop",
   },
   {
     title: "Brand Identity System",
@@ -27,7 +27,7 @@ const FeaturedWork = () => {
   return (
     <section id="work" className="py-24 relative">
       {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gradient-purple/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gradient-purple-light/10 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}

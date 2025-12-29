@@ -50,9 +50,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "gradient-purple": "hsl(var(--gradient-purple))",
+        "gradient-purple-light": "hsl(var(--gradient-purple-light))",
+        "gradient-purple-dark": "hsl(var(--gradient-purple-dark))",
         "gradient-blue": "hsl(var(--gradient-blue))",
-        "gradient-blue-light": "hsl(var(--gradient-blue-light))",
-        "gradient-blue-dark": "hsl(var(--gradient-blue-dark))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
