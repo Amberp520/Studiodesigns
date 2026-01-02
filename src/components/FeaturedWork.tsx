@@ -25,17 +25,20 @@ const projects = [
 
 const FeaturedWork = () => {
   return (
-    <section id="work" className="py-24 relative">
+    <section id="work" className="py-24 relative bg-foreground/[0.02]">
       {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gradient-purple-light/10 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-violet-500/5 to-transparent pointer-events-none" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 md:px-16 relative z-10">
         {/* Section Header */}
         <div className="max-w-2xl mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-up">
-            Featured <span className="gradient-text">Work</span>
+          <p className="font-space-mono text-xs tracking-widest text-foreground/60 mb-4 opacity-0 animate-fade-up">
+            [ SELECTED PROJECTS ]
+          </p>
+          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 opacity-0 animate-fade-up animation-delay-200">
+            Featured Work
           </h2>
-          <p className="text-muted-foreground text-lg opacity-0 animate-fade-up animation-delay-200">
+          <p className="font-eb-garamond text-lg text-foreground/70 opacity-0 animate-fade-up animation-delay-400">
             A selection of projects that showcase my approach to design — 
             combining aesthetics with functionality to create memorable experiences.
           </p>

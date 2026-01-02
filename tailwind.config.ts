@@ -13,45 +13,16 @@ export default {
   		}
   	},
   	extend: {
-  		fontFamily: {
-  			outfit: [
-  				'Outfit',
-  				'sans-serif'
-  			],
-  			sans: [
-  				'Lato',
-  				'ui-sans-serif',
-  				'system-ui',
-  				'-apple-system',
-  				'BlinkMacSystemFont',
-  				'Segoe UI',
-  				'Roboto',
-  				'Helvetica Neue',
-  				'Arial',
-  				'Noto Sans',
-  				'sans-serif'
-  			],
-  			serif: [
-  				'EB Garamond',
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
-  			],
-  			mono: [
-  				'Fira Code',
-  				'ui-monospace',
-  				'SFMono-Regular',
-  				'Menlo',
-  				'Monaco',
-  				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
-  				'monospace'
-  			]
-  		},
+fontFamily: {
+			outfit: ['Outfit', 'sans-serif'],
+			playfair: ['Playfair Display', 'serif'],
+			'space-grotesk': ['Space Grotesk', 'sans-serif'],
+			'space-mono': ['Space Mono', 'monospace'],
+			'eb-garamond': ['EB Garamond', 'serif'],
+			sans: ['Space Grotesk', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			serif: ['EB Garamond', 'ui-serif', 'Georgia', 'serif'],
+			mono: ['Space Mono', 'ui-monospace', 'monospace'],
+		},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
