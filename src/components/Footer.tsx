@@ -1,19 +1,17 @@
 const Footer = () => {
   return (
-    <footer className="py-8 border-t border-border/30">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <a href="#" className="text-xl font-bold gradient-text">
-            Studio.
-          </a>
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Studio. Crafted with passion.
+    <footer className="py-12 border-t border-foreground/10">
+      <div className="container mx-auto px-6 md:px-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="font-playfair text-xl font-bold tracking-tight">EP.</div>
+          <p className="font-space-mono text-xs tracking-wider text-foreground/50">
+            © {new Date().getFullYear()} Emenike Precious. Crafted with passion.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <div className="flex items-center gap-8">
+            <a href="#" className="font-space-mono text-xs tracking-wider text-foreground/50 hover:text-foreground transition-colors">
               Privacy
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#" className="font-space-mono text-xs tracking-wider text-foreground/50 hover:text-foreground transition-colors">
               Terms
             </a>
           </div>
