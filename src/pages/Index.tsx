@@ -22,9 +22,9 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <FeaturedWork />
         <BlogSection />
-        <About />
         <Contact />
       </main>
       <Footer />
