@@ -1,6 +1,5 @@
 import { MessageCircle, Twitter, Linkedin, Github, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/amberprecious998/", label: "Instagram" },
@@ -10,46 +9,57 @@ const socialLinks = [
 ];
 
 const Contact = () => {
-  const { ref, isRevealed } = useScrollReveal();
   const whatsappMessage = encodeURIComponent("Hello, I am interested in your work. My name is ");
   const whatsappLink = `https://wa.me/2349165920038?text=${whatsappMessage}`;
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
+      {/* Background Gradient */}
+      <div className="absolute inset-0">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-primary/10 via-primary/5 to-transparent" />
+      </div>
 
-      <div className="container mx-auto px-6 md:px-16 relative z-10">
-        <div ref={ref as React.RefObject<HTMLDivElement>} className={`max-w-3xl mx-auto text-center scroll-reveal-scale ${isRevealed ? 'revealed' : ''}`}>
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="w-12 h-px bg-primary" />
-            <p className="font-space-mono text-xs tracking-widest text-primary">GET IN TOUCH</p>
-            <span className="w-12 h-px bg-primary" />
-          </div>
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-6">
-            Let's Create Something <span className="gradient-text">Amazing</span>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Heading */}
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-up">
+            Let's Create Something{" "}
+            <span className="gradient-text">Amazing</span>
           </h2>
-          <p className="font-eb-garamond text-lg text-foreground/70 mb-10">
-            Have a project in mind or just want to chat about design? I'd love to hear from you.
+          <p className="text-muted-foreground text-lg mb-10 opacity-0 animate-fade-up animation-delay-200">
+            Have a project in mind or just want to chat about design? 
+            I'd love to hear from you.
           </p>
 
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-            <Button className="gradient-bg text-primary-foreground hover:opacity-90 rounded-full px-10 py-7 font-space-grotesk tracking-wide shadow-warm hover:shadow-glow transition-all text-lg">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Let's Talk on WhatsApp
-            </Button>
-          </a>
+          {/* CTA Button */}
+          <div className="opacity-0 animate-fade-up animation-delay-400">
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <Button variant="gradient" size="xl" className="group glow">
+                <MessageCircle className="w-5 h-5" />
+                Let's Talk on WhatsApp
+              </Button>
+            </a>
+          </div>
 
-          <div className="my-12 flex items-center gap-4">
+          {/* Divider */}
+          <div className="my-12 flex items-center gap-4 opacity-0 animate-fade-in animation-delay-600">
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-            <span className="font-space-mono text-xs text-foreground/50">or connect</span>
+            <span className="text-muted-foreground text-sm">or connect with me</span>
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           </div>
 
-          <div className="flex items-center justify-center gap-4">
+          {/* Social Links */}
+          <div className="flex items-center justify-center gap-4 opacity-0 animate-fade-up animation-delay-600">
             {socialLinks.map((social) => (
-              <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/50 hover:shadow-warm transition-all group">
-                <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300 group"
+                aria-label={social.label}
+              >
+                <social.icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-12" />
               </a>
             ))}
           </div>
