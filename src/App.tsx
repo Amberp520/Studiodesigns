@@ -13,6 +13,7 @@ import Prototyping from "./pages/skills/Prototyping";
 import DesignSystems from "./pages/blog/DesignSystems";
 import UXResearch from "./pages/blog/UXResearch";
 import MotionDesign from "./pages/blog/MotionDesign";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/skills/ux-strategy" element={<UXStrategy />} />
           <Route path="/skills/development" element={<Development />} />
           <Route path="/skills/prototyping" element={<Prototyping />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/blog/design-systems" element={<DesignSystems />} />
           <Route path="/blog/ux-research" element={<UXResearch />} />
           <Route path="/blog/motion-design" element={<MotionDesign />} />

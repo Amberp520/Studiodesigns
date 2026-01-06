@@ -76,33 +76,35 @@ const FeaturedWork = () => {
             {/* Project Images - 3 Angled Containers */}
             <div className="lg:w-2/3 relative h-[400px] lg:h-[500px]">
               {/* Left angled image */}
-              <div 
-                className="absolute left-0 top-8 w-[45%] h-[85%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105"
+              <button 
+                onClick={() => setActiveIndex((activeIndex + projects.length - 1) % projects.length)}
+                className="absolute left-0 top-8 w-[45%] h-[85%] rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:scale-105 group cursor-pointer border-2 border-transparent hover:border-primary/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
                 style={{ transform: "perspective(1000px) rotateY(5deg)" }}
               >
                 <img
-                  src={projects[(activeIndex) % projects.length].image}
+                  src={projects[(activeIndex + projects.length - 1) % projects.length].image}
                   alt="Project preview"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-accent/0 to-secondary/0 group-hover:from-primary/20 group-hover:via-accent/20 group-hover:to-secondary/20 transition-all duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)))', padding: '2px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'xor', WebkitMaskComposite: 'xor' }} />
+              </button>
 
               {/* Center image (main) */}
               <div 
-                className="absolute left-1/2 -translate-x-1/2 top-0 w-[50%] h-[90%] rounded-2xl overflow-hidden shadow-2xl z-10 transition-all duration-500"
+                className="absolute left-1/2 -translate-x-1/2 top-0 w-[50%] h-[90%] rounded-2xl overflow-hidden z-10 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] ring-2 ring-primary/30"
               >
                 <img
                   src={activeProject.image}
                   alt={activeProject.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
 
               {/* Right angled image */}
-              <div 
-                className="absolute right-0 top-8 w-[45%] h-[85%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105"
+              <button 
+                onClick={() => setActiveIndex((activeIndex + 1) % projects.length)}
+                className="absolute right-0 top-8 w-[45%] h-[85%] rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:scale-105 group cursor-pointer border-2 border-transparent hover:border-primary/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
                 style={{ transform: "perspective(1000px) rotateY(-5deg)" }}
               >
                 <img
@@ -110,8 +112,9 @@ const FeaturedWork = () => {
                   alt="Project preview"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-accent/0 to-secondary/0 group-hover:from-primary/20 group-hover:via-accent/20 group-hover:to-secondary/20 transition-all duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)))', padding: '2px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'xor', WebkitMaskComposite: 'xor' }} />
+              </button>
             </div>
 
             {/* Project Info - Right Side */}

@@ -1,6 +1,7 @@
 import BlogCard from "./BlogCard";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const blogPosts = [
   {
@@ -47,10 +48,12 @@ const BlogSection = () => {
               that people love to use.
             </p>
           </div>
-          <Button variant="ghost" className="group self-start opacity-0 animate-fade-up animation-delay-400">
-            View all posts
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <Link to="/blog">
+            <Button variant="ghost" className="group self-start opacity-0 animate-fade-up animation-delay-400">
+              View all posts
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </div>
 
         {/* Blog Grid */}

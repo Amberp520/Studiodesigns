@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useReadTracking } from "@/hooks/useReadTracking";
 
 const UXResearch = () => {
+  useReadTracking("ux-research");
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
