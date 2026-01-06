@@ -13,6 +13,9 @@ import Prototyping from "./pages/skills/Prototyping";
 import DesignSystems from "./pages/blog/DesignSystems";
 import UXResearch from "./pages/blog/UXResearch";
 import MotionDesign from "./pages/blog/MotionDesign";
+import AccessibilityGuide from "./pages/blog/AccessibilityGuide";
+import ColorPsychology from "./pages/blog/ColorPsychology";
+import PrototypingPractices from "./pages/blog/PrototypingPractices";
 import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
@@ -34,6 +37,9 @@ const App = () => (
           <Route path="/blog/design-systems" element={<DesignSystems />} />
           <Route path="/blog/ux-research" element={<UXResearch />} />
           <Route path="/blog/motion-design" element={<MotionDesign />} />
+          <Route path="/blog/accessibility-guide" element={<AccessibilityGuide />} />
+          <Route path="/blog/color-psychology" element={<ColorPsychology />} />
+          <Route path="/blog/prototyping-practices" element={<PrototypingPractices />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

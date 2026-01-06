@@ -1,36 +1,115 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-const projects = [
+interface ProjectView {
+  label: string;
+  image: string;
+}
+
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  views: ProjectView[];
+}
+
+const projects: Project[] = [
   {
     title: "Fintech Dashboard",
     category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
     description: "A comprehensive financial dashboard designed to help users track investments, manage portfolios, and visualize market trends with intuitive data visualization.",
+    views: [
+      { label: "Dashboard Overview", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" },
+      { label: "Analytics View", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" },
+      { label: "Mobile Interface", image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop" },
+    ],
   },
   {
     title: "E-commerce Redesign",
     category: "Product Design",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     description: "Complete redesign of an e-commerce platform focusing on conversion optimization, seamless checkout flow, and enhanced product discovery experience.",
+    views: [
+      { label: "Homepage", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" },
+      { label: "Product Page", image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&h=600&fit=crop" },
+      { label: "Checkout Flow", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop" },
+    ],
   },
   {
     title: "Health & Wellness App",
     category: "Mobile Design",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop",
     description: "A mobile application designed to help users track their wellness journey, featuring workout plans, nutrition tracking, and mindfulness exercises.",
+    views: [
+      { label: "Home Screen", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop" },
+      { label: "Workout Tracker", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop" },
+      { label: "Progress Stats", image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&h=600&fit=crop" },
+    ],
   },
   {
     title: "Brand Identity System",
     category: "Branding",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
     description: "Comprehensive brand identity system including logo design, color palette, typography guidelines, and visual language for consistent brand representation.",
+    views: [
+      { label: "Logo Variations", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" },
+      { label: "Color System", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop" },
+      { label: "Brand Guidelines", image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop" },
+    ],
+  },
+  {
+    title: "SaaS Platform",
+    category: "Web Design",
+    description: "Modern SaaS platform designed for team collaboration with intuitive workflows, real-time updates, and seamless integrations.",
+    views: [
+      { label: "Dashboard", image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=600&fit=crop" },
+      { label: "Team View", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" },
+      { label: "Settings", image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop" },
+    ],
+  },
+  {
+    title: "Travel Booking App",
+    category: "Mobile Design",
+    description: "A travel companion app that simplifies trip planning with smart recommendations, booking management, and real-time travel updates.",
+    views: [
+      { label: "Explore", image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=600&fit=crop" },
+      { label: "Booking Flow", image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop" },
+      { label: "Trip Details", image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop" },
+    ],
   },
 ];
 
 const FeaturedWork = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeProject = projects[activeIndex];
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [activeViewIndex, setActiveViewIndex] = useState(1); // Center card
+  const activeProject = projects[activeProjectIndex];
+
+  const handleCardClick = (viewIndex: number) => {
+    if (viewIndex !== activeViewIndex) {
+      setActiveViewIndex(viewIndex);
+    }
+  };
+
+  const getCardPosition = (index: number) => {
+    const positions = [
+      { // Left
+        className: "left-0 top-8 w-[42%] h-[80%]",
+        transform: "perspective(1000px) rotateY(12deg) translateZ(-50px)",
+        zIndex: 5,
+      },
+      { // Center
+        className: "left-1/2 -translate-x-1/2 top-0 w-[48%] h-[90%]",
+        transform: "perspective(1000px) rotateY(0deg) translateZ(0px)",
+        zIndex: 20,
+      },
+      { // Right
+        className: "right-0 top-8 w-[42%] h-[80%]",
+        transform: "perspective(1000px) rotateY(-12deg) translateZ(-50px)",
+        zIndex: 5,
+      },
+    ];
+
+    // Calculate display position based on activeViewIndex
+    const displayIndex = (index - activeViewIndex + 4) % 3;
+    return positions[displayIndex] || positions[0];
+  };
 
   return (
     <section id="work" className="py-24 relative bg-muted/30">
@@ -48,23 +127,26 @@ const FeaturedWork = () => {
         {/* Gallery Layout */}
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Thumbnail Navigation - Left Side */}
-          <div className="lg:w-24 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0">
+          <div className="lg:w-24 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0 lg:max-h-[500px]">
             {projects.map((project, index) => (
               <button
                 key={project.title}
-                onClick={() => setActiveIndex(index)}
-                className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                  activeIndex === index 
-                    ? "ring-2 ring-primary scale-105" 
-                    : "opacity-60 hover:opacity-100"
+                onClick={() => {
+                  setActiveProjectIndex(index);
+                  setActiveViewIndex(1); // Reset to center view
+                }}
+                className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-500 ease-out ${
+                  activeProjectIndex === index 
+                    ? "ring-2 ring-primary scale-105 shadow-lg" 
+                    : "opacity-60 hover:opacity-100 hover:scale-105"
                 }`}
               >
                 <img
-                  src={project.image}
+                  src={project.views[0].image}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
-                {activeIndex === index && (
+                {activeProjectIndex === index && (
                   <div className="absolute inset-0 bg-primary/20" />
                 )}
               </button>
@@ -73,55 +155,70 @@ const FeaturedWork = () => {
 
           {/* Main Display Area */}
           <div className="flex-1 flex flex-col lg:flex-row gap-8">
-            {/* Project Images - 3 Angled Containers */}
+            {/* Project Images - 3 Angled Containers showing same project */}
             <div className="lg:w-2/3 relative h-[400px] lg:h-[500px]">
-              {/* Left angled image */}
-              <button 
-                onClick={() => setActiveIndex((activeIndex + projects.length - 1) % projects.length)}
-                className="absolute left-0 top-8 w-[45%] h-[85%] rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:scale-105 group cursor-pointer border-2 border-transparent hover:border-primary/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
-                style={{ transform: "perspective(1000px) rotateY(5deg)" }}
-              >
-                <img
-                  src={projects[(activeIndex + projects.length - 1) % projects.length].image}
-                  alt="Project preview"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-accent/0 to-secondary/0 group-hover:from-primary/20 group-hover:via-accent/20 group-hover:to-secondary/20 transition-all duration-500" />
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)))', padding: '2px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'xor', WebkitMaskComposite: 'xor' }} />
-              </button>
+              {activeProject.views.map((view, index) => {
+                const position = getCardPosition(index);
+                const isCenter = (index - activeViewIndex + 4) % 3 === 1;
+                
+                return (
+                  <button
+                    key={view.label}
+                    onClick={() => handleCardClick(index)}
+                    disabled={isCenter}
+                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group ${position.className} ${
+                      isCenter 
+                        ? "cursor-default" 
+                        : "cursor-pointer hover:scale-[1.02]"
+                    }`}
+                    style={{ 
+                      transform: position.transform,
+                      zIndex: position.zIndex,
+                    }}
+                  >
+                    {/* Card with 3D shadow */}
+                    <div className={`relative w-full h-full rounded-2xl overflow-hidden ${
+                      isCenter 
+                        ? "shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] ring-2 ring-primary/40" 
+                        : "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)]"
+                    }`}>
+                      <img
+                        src={view.image}
+                        alt={view.label}
+                        className="w-full h-full object-cover"
+                      />
+                      
+                      {/* Animated gradient border on hover - only for side cards */}
+                      {!isCenter && (
+                        <div 
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none animate-border-spin"
+                          style={{
+                            background: 'conic-gradient(from var(--border-angle, 0deg), hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)), hsl(var(--primary)))',
+                            padding: '2px',
+                            mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                            maskComposite: 'xor',
+                            WebkitMaskComposite: 'xor',
+                          }}
+                        />
+                      )}
 
-              {/* Center image (main) */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 top-0 w-[50%] h-[90%] rounded-2xl overflow-hidden z-10 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] ring-2 ring-primary/30"
-              >
-                <img
-                  src={activeProject.image}
-                  alt={activeProject.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Right angled image */}
-              <button 
-                onClick={() => setActiveIndex((activeIndex + 1) % projects.length)}
-                className="absolute right-0 top-8 w-[45%] h-[85%] rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:scale-105 group cursor-pointer border-2 border-transparent hover:border-primary/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
-                style={{ transform: "perspective(1000px) rotateY(-5deg)" }}
-              >
-                <img
-                  src={projects[(activeIndex + 1) % projects.length].image}
-                  alt="Project preview"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-accent/0 to-secondary/0 group-hover:from-primary/20 group-hover:via-accent/20 group-hover:to-secondary/20 transition-all duration-500" />
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)))', padding: '2px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'xor', WebkitMaskComposite: 'xor' }} />
-              </button>
+                      {/* View label */}
+                      <div className={`absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-500 ${
+                        isCenter ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      }`}>
+                        <span className="text-white text-sm font-medium">{view.label}</span>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
 
             {/* Project Info - Right Side */}
             <div className="lg:w-1/3 flex flex-col justify-center">
               <div className="space-y-4">
                 <span className="text-sm font-medium text-primary uppercase tracking-wider">
-                  {String(activeIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+                  {String(activeProjectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
                 </span>
                 <h3 className="text-3xl lg:text-4xl font-bold">
                   {activeProject.title}
@@ -132,6 +229,24 @@ const FeaturedWork = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {activeProject.description}
                 </p>
+                
+                {/* View indicators */}
+                <div className="flex gap-2 pt-2">
+                  {activeProject.views.map((view, index) => (
+                    <button
+                      key={view.label}
+                      onClick={() => setActiveViewIndex(index)}
+                      className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 ${
+                        activeViewIndex === index
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground hover:bg-primary/20"
+                      }`}
+                    >
+                      {view.label}
+                    </button>
+                  ))}
+                </div>
+
                 <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-bg text-primary-foreground font-medium hover:opacity-90 transition-opacity group mt-4">
                   View Project
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -146,9 +261,12 @@ const FeaturedWork = () => {
           {projects.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setActiveProjectIndex(index);
+                setActiveViewIndex(1);
+              }}
               className={`w-3 h-3 rounded-sm transition-all duration-300 ${
-                activeIndex === index 
+                activeProjectIndex === index 
                   ? "bg-primary w-6" 
                   : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
               }`}

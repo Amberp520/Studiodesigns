@@ -188,4 +188,24 @@
   .animation-delay-600 {
     animation-delay: 600ms;
   }
+
+  /* Animated border spin */
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .animate-border-spin {
+    animation: border-spin 3s linear infinite;
+  }
+
+  @keyframes border-spin {
+    from {
+      --border-angle: 0deg;
+    }
+    to {
+      --border-angle: 360deg;
+    }
+  }
 }
