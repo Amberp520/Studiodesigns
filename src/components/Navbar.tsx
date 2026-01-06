@@ -33,11 +33,13 @@ const Navbar = () => {
   };
 
   const navLinks = [
+    { name: "About", href: "#about" },
     { name: "Work", href: "#work" },
     { name: "Blog", href: "#blog" },
-    { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
+
+  const whatsappLink = "https://wa.me/2349022518201?text=Hi%20Precious%2C%20I%27d%20love%20to%20discuss%20a%20project%20with%20you!";
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -88,9 +90,11 @@ const Navbar = () => {
               )}
             </button>
             
-            <Button variant="gradient" size="sm">
-              Let's Talk
-            </Button>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <Button variant="gradient" size="sm">
+                Let's Talk
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -129,9 +133,11 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="gradient" size="sm" className="w-fit mt-2">
-                Let's Talk
-              </Button>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <Button variant="gradient" size="sm" className="w-fit mt-2">
+                  Let's Talk
+                </Button>
+              </a>
             </div>
           </div>
         )}
