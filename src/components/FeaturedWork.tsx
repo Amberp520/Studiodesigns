@@ -78,37 +78,44 @@ const projects: Project[] = [
 
 const FeaturedWork = () => {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [activeViewIndex, setActiveViewIndex] = useState(1); // Center card starts in front
   const activeProject = projects[activeProjectIndex];
 
   const getCardStyle = (index: number) => {
-    // Fixed positions: Left (0), Center (1), Right (2)
-    const styles = [
-      { // Left card
+    // Calculate position based on which card is active (in front)
+    const positions = [
+      { // Left position
         left: "0%",
-        top: "10%",
-        width: "38%",
-        height: "75%",
+        top: "12%",
         transform: "perspective(1000px) rotateY(15deg)",
         zIndex: 5,
       },
-      { // Center card
+      { // Center position (front)
         left: "31%",
-        top: "0%",
-        width: "38%",
-        height: "100%",
+        top: "5%",
         transform: "perspective(1000px) rotateY(0deg)",
         zIndex: 20,
       },
-      { // Right card
+      { // Right position
+        left: "auto",
         right: "0%",
-        top: "10%",
-        width: "38%",
-        height: "75%",
+        top: "12%",
         transform: "perspective(1000px) rotateY(-15deg)",
         zIndex: 5,
       },
     ];
-    return styles[index];
+
+    // Calculate which position this card should be in based on activeViewIndex
+    const offset = (index - activeViewIndex + 3) % 3;
+    const positionIndex = offset === 0 ? 1 : offset === 1 ? 2 : 0;
+    
+    return positions[positionIndex];
+  };
+
+  const handleCardClick = (index: number) => {
+    if (index !== activeViewIndex) {
+      setActiveViewIndex(index);
+    }
   };
 
   return (
@@ -154,20 +161,21 @@ const FeaturedWork = () => {
           <div className="flex-1 flex flex-col lg:flex-row gap-8">
             {/* Project Images - 3 Angled Containers showing same project */}
             <div className="lg:w-2/3 relative h-[400px] lg:h-[500px]">
-              {activeProject.views.map((view, index) => {
+            {activeProject.views.map((view, index) => {
                 const style = getCardStyle(index);
-                const isCenter = index === 1;
+                const isCenter = index === activeViewIndex;
                 
                 return (
                   <div
                     key={view.label}
-                    className="absolute rounded-2xl overflow-hidden transition-all duration-500 ease-out group"
+                    onClick={() => handleCardClick(index)}
+                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group w-[38%] h-[75%] ${
+                      !isCenter ? "cursor-pointer hover:scale-[1.02]" : ""
+                    }`}
                     style={{
                       left: style.left,
                       right: style.right,
                       top: style.top,
-                      width: style.width,
-                      height: style.height,
                       transform: style.transform,
                       zIndex: style.zIndex,
                     }}
