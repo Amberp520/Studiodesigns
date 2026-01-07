@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import PageTransition from "@/components/PageTransition";
 
 const Index = () => {
   useEffect(() => {
@@ -18,18 +19,20 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <FeaturedWork />
-        <BlogSection />
-        <Contact />
-      </main>
-      <Footer />
-      <ScrollProgress />
-    </div>
+    <PageTransition>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <FeaturedWork />
+          <BlogSection />
+          <Contact />
+        </main>
+        <Footer />
+        <ScrollProgress />
+      </div>
+    </PageTransition>
   );
 };
 
