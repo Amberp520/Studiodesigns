@@ -86,20 +86,20 @@ const FeaturedWork = () => {
     const positions = [
       { // Left position
         left: "0%",
-        top: "12%",
+        top: "10%",
         transform: "perspective(1000px) rotateY(15deg)",
         zIndex: 5,
       },
       { // Center position (front)
         left: "31%",
-        top: "5%",
+        top: "10%",
         transform: "perspective(1000px) rotateY(0deg)",
         zIndex: 20,
       },
       { // Right position
         left: "auto",
         right: "0%",
-        top: "12%",
+        top: "10%",
         transform: "perspective(1000px) rotateY(-15deg)",
         zIndex: 5,
       },
@@ -169,7 +169,7 @@ const FeaturedWork = () => {
                   <div
                     key={view.label}
                     onClick={() => handleCardClick(index)}
-                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group w-[38%] h-[75%] ${
+                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group w-[35%] aspect-square ${
                       !isCenter ? "cursor-pointer hover:scale-[1.02]" : ""
                     }`}
                     style={{
@@ -190,9 +190,9 @@ const FeaturedWork = () => {
                         className="w-full h-full object-cover"
                       />
                       
-                      {/* Animated gradient border on hover */}
+                      {/* Animated gradient border - always visible */}
                       <div 
-                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none animate-border-spin"
+                        className="absolute inset-0 rounded-2xl pointer-events-none animate-border-spin"
                         style={{
                           background: 'conic-gradient(from var(--border-angle, 0deg), hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)), hsl(var(--primary)))',
                           padding: '2px',
