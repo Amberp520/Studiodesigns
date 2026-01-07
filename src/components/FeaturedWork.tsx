@@ -78,37 +78,37 @@ const projects: Project[] = [
 
 const FeaturedWork = () => {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const [activeViewIndex, setActiveViewIndex] = useState(1); // Center card
   const activeProject = projects[activeProjectIndex];
 
-  const handleCardClick = (viewIndex: number) => {
-    if (viewIndex !== activeViewIndex) {
-      setActiveViewIndex(viewIndex);
-    }
-  };
-
-  const getCardPosition = (index: number) => {
-    const positions = [
-      { // Left
-        className: "left-0 top-8 w-[42%] h-[80%]",
-        transform: "perspective(1000px) rotateY(12deg) translateZ(-50px)",
+  const getCardStyle = (index: number) => {
+    // Fixed positions: Left (0), Center (1), Right (2)
+    const styles = [
+      { // Left card
+        left: "0%",
+        top: "10%",
+        width: "38%",
+        height: "75%",
+        transform: "perspective(1000px) rotateY(15deg)",
         zIndex: 5,
       },
-      { // Center
-        className: "left-1/2 -translate-x-1/2 top-0 w-[48%] h-[90%]",
-        transform: "perspective(1000px) rotateY(0deg) translateZ(0px)",
+      { // Center card
+        left: "31%",
+        top: "0%",
+        width: "38%",
+        height: "100%",
+        transform: "perspective(1000px) rotateY(0deg)",
         zIndex: 20,
       },
-      { // Right
-        className: "right-0 top-8 w-[42%] h-[80%]",
-        transform: "perspective(1000px) rotateY(-12deg) translateZ(-50px)",
+      { // Right card
+        right: "0%",
+        top: "10%",
+        width: "38%",
+        height: "75%",
+        transform: "perspective(1000px) rotateY(-15deg)",
         zIndex: 5,
       },
     ];
-
-    // Calculate display position based on activeViewIndex
-    const displayIndex = (index - activeViewIndex + 4) % 3;
-    return positions[displayIndex] || positions[0];
+    return styles[index];
   };
 
   return (
@@ -127,14 +127,11 @@ const FeaturedWork = () => {
         {/* Gallery Layout */}
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Thumbnail Navigation - Left Side */}
-          <div className="lg:w-24 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0 lg:max-h-[500px]">
+          <div className="lg:w-24 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0 lg:max-h-[500px] scrollbar-hide">
             {projects.map((project, index) => (
               <button
                 key={project.title}
-                onClick={() => {
-                  setActiveProjectIndex(index);
-                  setActiveViewIndex(1); // Reset to center view
-                }}
+                onClick={() => setActiveProjectIndex(index)}
                 className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-500 ease-out ${
                   activeProjectIndex === index 
                     ? "ring-2 ring-primary scale-105 shadow-lg" 
@@ -158,29 +155,26 @@ const FeaturedWork = () => {
             {/* Project Images - 3 Angled Containers showing same project */}
             <div className="lg:w-2/3 relative h-[400px] lg:h-[500px]">
               {activeProject.views.map((view, index) => {
-                const position = getCardPosition(index);
-                const isCenter = (index - activeViewIndex + 4) % 3 === 1;
+                const style = getCardStyle(index);
+                const isCenter = index === 1;
                 
                 return (
-                  <button
+                  <div
                     key={view.label}
-                    onClick={() => handleCardClick(index)}
-                    disabled={isCenter}
-                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group ${position.className} ${
-                      isCenter 
-                        ? "cursor-default" 
-                        : "cursor-pointer hover:scale-[1.02]"
-                    }`}
-                    style={{ 
-                      transform: position.transform,
-                      zIndex: position.zIndex,
+                    className="absolute rounded-2xl overflow-hidden transition-all duration-500 ease-out group"
+                    style={{
+                      left: style.left,
+                      right: style.right,
+                      top: style.top,
+                      width: style.width,
+                      height: style.height,
+                      transform: style.transform,
+                      zIndex: style.zIndex,
                     }}
                   >
                     {/* Card with 3D shadow */}
-                    <div className={`relative w-full h-full rounded-2xl overflow-hidden ${
-                      isCenter 
-                        ? "shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] ring-2 ring-primary/40" 
-                        : "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)]"
+                    <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.4)] dark:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)] ${
+                      isCenter ? "ring-2 ring-primary/30" : ""
                     }`}>
                       <img
                         src={view.image}
@@ -188,28 +182,24 @@ const FeaturedWork = () => {
                         className="w-full h-full object-cover"
                       />
                       
-                      {/* Animated gradient border on hover - only for side cards */}
-                      {!isCenter && (
-                        <div 
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none animate-border-spin"
-                          style={{
-                            background: 'conic-gradient(from var(--border-angle, 0deg), hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)), hsl(var(--primary)))',
-                            padding: '2px',
-                            mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                            maskComposite: 'xor',
-                            WebkitMaskComposite: 'xor',
-                          }}
-                        />
-                      )}
+                      {/* Animated gradient border on hover */}
+                      <div 
+                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none animate-border-spin"
+                        style={{
+                          background: 'conic-gradient(from var(--border-angle, 0deg), hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)), hsl(var(--primary)))',
+                          padding: '2px',
+                          mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                          maskComposite: 'xor',
+                          WebkitMaskComposite: 'xor',
+                        }}
+                      />
 
                       {/* View label */}
-                      <div className={`absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-500 ${
-                        isCenter ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                      }`}>
+                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="text-white text-sm font-medium">{view.label}</span>
                       </div>
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             </div>
@@ -230,20 +220,15 @@ const FeaturedWork = () => {
                   {activeProject.description}
                 </p>
                 
-                {/* View indicators */}
+                {/* View labels */}
                 <div className="flex gap-2 pt-2">
-                  {activeProject.views.map((view, index) => (
-                    <button
+                  {activeProject.views.map((view) => (
+                    <span
                       key={view.label}
-                      onClick={() => setActiveViewIndex(index)}
-                      className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 ${
-                        activeViewIndex === index
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground hover:bg-primary/20"
-                      }`}
+                      className="text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground"
                     >
                       {view.label}
-                    </button>
+                    </span>
                   ))}
                 </div>
 
@@ -261,10 +246,7 @@ const FeaturedWork = () => {
           {projects.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setActiveProjectIndex(index);
-                setActiveViewIndex(1);
-              }}
+              onClick={() => setActiveProjectIndex(index)}
               className={`w-3 h-3 rounded-sm transition-all duration-300 ${
                 activeProjectIndex === index 
                   ? "bg-primary w-6" 
