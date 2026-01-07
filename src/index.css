@@ -189,6 +189,15 @@
     animation-delay: 600ms;
   }
 
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Animated border spin */
   @property --border-angle {
     syntax: '<angle>';
