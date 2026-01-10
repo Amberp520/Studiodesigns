@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ProjectView {
   label: string;
@@ -241,10 +242,13 @@ const FeaturedWork = () => {
                   ))}
                 </div>
 
-                <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-bg text-primary-foreground font-medium hover:opacity-90 transition-opacity group mt-4">
-                  View Project
+                <Link 
+                  to={`/projects/${activeProject.title.toLowerCase().replace(/[&\s]+/g, '-')}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-bg text-primary-foreground font-medium hover:opacity-90 transition-opacity group mt-4"
+                >
+                  View Case Study
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>

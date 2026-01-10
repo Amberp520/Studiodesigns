@@ -17,6 +17,12 @@ import AccessibilityGuide from "./pages/blog/AccessibilityGuide";
 import ColorPsychology from "./pages/blog/ColorPsychology";
 import PrototypingPractices from "./pages/blog/PrototypingPractices";
 import Blog from "./pages/Blog";
+import FintechDashboard from "./pages/projects/FintechDashboard";
+import EcommerceRedesign from "./pages/projects/EcommerceRedesign";
+import HealthWellnessApp from "./pages/projects/HealthWellnessApp";
+import BrandIdentitySystem from "./pages/projects/BrandIdentitySystem";
+import SaaSPlatform from "./pages/projects/SaaSPlatform";
+import TravelBookingApp from "./pages/projects/TravelBookingApp";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +46,12 @@ const App = () => (
           <Route path="/blog/accessibility-guide" element={<AccessibilityGuide />} />
           <Route path="/blog/color-psychology" element={<ColorPsychology />} />
           <Route path="/blog/prototyping-practices" element={<PrototypingPractices />} />
+          <Route path="/projects/fintech-dashboard" element={<FintechDashboard />} />
+          <Route path="/projects/e-commerce-redesign" element={<EcommerceRedesign />} />
+          <Route path="/projects/health-wellness-app" element={<HealthWellnessApp />} />
+          <Route path="/projects/brand-identity-system" element={<BrandIdentitySystem />} />
+          <Route path="/projects/saas-platform" element={<SaaSPlatform />} />
+          <Route path="/projects/travel-booking-app" element={<TravelBookingApp />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
