@@ -16,8 +16,8 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Fintech Dashboard",
-    category: "UI/UX Design",
-    description: "A comprehensive financial dashboard designed to help users track investments, manage portfolios, and visualize market trends with intuitive data visualization.",
+    category: "Product Design",
+    description: "Problem: Users struggled to understand investment performance. Solution: A fintech product with clear data visualization that helps users track investments, understand performance, and make informed financial decisions. Impact: 40% increase in user engagement.",
     views: [
       { label: "Dashboard Overview", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" },
       { label: "Analytics View", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" },
@@ -27,7 +27,7 @@ const projects: Project[] = [
   {
     title: "E-commerce Redesign",
     category: "Product Design",
-    description: "Complete redesign of an e-commerce platform focusing on conversion optimization, seamless checkout flow, and enhanced product discovery experience.",
+    description: "Problem: High cart abandonment and poor product discovery. Solution: End-to-end product redesign focusing on streamlined checkout flow and personalized recommendations. Impact: 25% reduction in cart abandonment.",
     views: [
       { label: "Homepage", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" },
       { label: "Product Page", image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&h=600&fit=crop" },
@@ -36,8 +36,8 @@ const projects: Project[] = [
   },
   {
     title: "Health & Wellness App",
-    category: "Mobile Design",
-    description: "A mobile application designed to help users track their wellness journey, featuring workout plans, nutrition tracking, and mindfulness exercises.",
+    category: "Product Design",
+    description: "Problem: Users lacked motivation to maintain healthy habits. Solution: A mobile product that gamifies wellness through personalized workout plans, nutrition tracking, and progress milestones. Impact: 60% user retention improvement.",
     views: [
       { label: "Home Screen", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop" },
       { label: "Workout Tracker", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop" },
@@ -46,8 +46,8 @@ const projects: Project[] = [
   },
   {
     title: "Brand Identity System",
-    category: "Branding",
-    description: "Comprehensive brand identity system including logo design, color palette, typography guidelines, and visual language for consistent brand representation.",
+    category: "Design System",
+    description: "Problem: Inconsistent brand representation across touchpoints. Solution: Comprehensive brand identity system with scalable components and clear guidelines. Impact: 50% faster design-to-development handoff.",
     views: [
       { label: "Logo Variations", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" },
       { label: "Color System", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop" },
@@ -56,8 +56,8 @@ const projects: Project[] = [
   },
   {
     title: "SaaS Platform",
-    category: "Web Design",
-    description: "Modern SaaS platform designed for team collaboration with intuitive workflows, real-time updates, and seamless integrations.",
+    category: "Product Design",
+    description: "Problem: Teams struggled with fragmented collaboration tools. Solution: Unified SaaS platform with intuitive workflows, real-time updates, and seamless integrations. Impact: 35% improvement in team productivity.",
     views: [
       { label: "Dashboard", image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=600&fit=crop" },
       { label: "Team View", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" },
@@ -66,8 +66,8 @@ const projects: Project[] = [
   },
   {
     title: "Travel Booking App",
-    category: "Mobile Design",
-    description: "A travel companion app that simplifies trip planning with smart recommendations, booking management, and real-time travel updates.",
+    category: "Product Design",
+    description: "Problem: Trip planning was overwhelming and time-consuming. Solution: A travel product that simplifies booking with smart recommendations and real-time updates. Impact: 45% increase in completed bookings.",
     views: [
       { label: "Explore", image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=600&fit=crop" },
       { label: "Booking Flow", image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop" },
@@ -124,10 +124,11 @@ const FeaturedWork = () => {
         {/* Section Header */}
         <div className="max-w-2xl mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-up">
-            Featured <span className="gradient-text">Work</span>
+            Product <span className="gradient-text">Work</span>
           </h2>
           <p className="text-muted-foreground text-lg opacity-0 animate-fade-up animation-delay-200">
-            A selection of projects that showcase my approach to design.
+            A selection of product design projects where I solved real user problems 
+            through research, strategy, and thoughtful design.
           </p>
         </div>
 

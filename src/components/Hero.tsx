@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -25,29 +25,29 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full mb-8 opacity-0 animate-fade-up">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Available for freelance projects</span>
+            <Lightbulb className="w-4 h-4 text-primary" />
+            <span className="text-sm text-muted-foreground">Designing products that solve real problems</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 opacity-0 animate-fade-up animation-delay-200">
-            Crafting{" "}
-            <span className="gradient-text">Digital</span>
+            Turning Complex Problems Into{" "}
+            <span className="gradient-text">Meaningful</span>
             <br />
-            Experiences
+            Digital Products
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up animation-delay-400">
-            UI/UX Designer & Creative Developer specializing in beautiful, 
-            user-centered digital products that make an impact.
+            Product Designer specializing in user-centered digital products that 
+            balance business goals, usability, and visual clarity to create real impact.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up animation-delay-600">
             <a href="#work">
               <Button variant="gradient" size="xl">
-                View My Work
+                View Product Work
               </Button>
             </a>
             <a 
@@ -56,7 +56,7 @@ const Hero = () => {
               rel="noopener noreferrer"
             >
               <Button variant="glass" size="xl">
-                Let's Talk
+                Let's Build a Product
               </Button>
             </a>
           </div>
