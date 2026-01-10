@@ -26,15 +26,15 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full mb-8 opacity-0 animate-fade-up">
             <Lightbulb className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Designing products that solve real problems</span>
+            <span className="text-sm text-muted-foreground">Product Designer</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 opacity-0 animate-fade-up animation-delay-200">
-            Turning Complex Problems Into{" "}
-            <span className="gradient-text">Meaningful</span>
+            Designing Products That{" "}
+            <span className="gradient-text">Solve</span>
             <br />
-            Digital Products
+            Real Problems
           </h1>
 
           {/* Subtitle */}
