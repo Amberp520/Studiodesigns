@@ -119,6 +119,58 @@ const FeaturedWork = () => {
     }
   };
 
+  // Mobile card component
+  const MobileProjectCard = ({ project, index }: { project: Project; index: number }) => (
+    <div className="glass-card rounded-2xl overflow-hidden">
+      {/* Large project image */}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img
+          src={project.views[0].image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        {/* Category badge */}
+        <span className="absolute top-4 left-4 px-3 py-1 text-xs font-medium rounded-full bg-primary/90 text-primary-foreground">
+          {project.category}
+        </span>
+        {/* Project number */}
+        <span className="absolute top-4 right-4 text-sm font-medium text-white/80">
+          {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+        </span>
+      </div>
+      
+      {/* Project info */}
+      <div className="p-5 space-y-3">
+        <h3 className="text-2xl font-bold">{project.title}</h3>
+        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+          {project.description}
+        </p>
+        
+        {/* View labels */}
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.views.map((view) => (
+            <span
+              key={view.label}
+              className="text-xs px-2.5 py-1 rounded-full bg-muted text-muted-foreground"
+            >
+              {view.label}
+            </span>
+          ))}
+        </div>
+        
+        <Link 
+          to={`/projects/${project.title.toLowerCase().replace(/[&\s]+/g, '-')}`}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gradient-bg text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity group mt-2"
+        >
+          View Case Study
+          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <section id="work" className="py-24 relative bg-muted/30">
       <div className="container mx-auto px-6 relative z-10">
@@ -133,8 +185,15 @@ const FeaturedWork = () => {
           </p>
         </div>
 
-        {/* Gallery Layout */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        {/* Mobile Layout - Vertical Stack */}
+        <div className="lg:hidden space-y-6">
+          {projects.map((project, index) => (
+            <MobileProjectCard key={project.title} project={project} index={index} />
+          ))}
+        </div>
+
+        {/* Desktop Layout - Original 3D Gallery */}
+        <div className="hidden lg:flex flex-col lg:flex-row gap-8">
           {/* Thumbnail Navigation - Left Side */}
           <div className="lg:w-24 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0 lg:max-h-[500px] scrollbar-hide">
             {projects.map((project, index) => (
@@ -254,8 +313,8 @@ const FeaturedWork = () => {
           </div>
         </div>
 
-        {/* Progress Indicators */}
-        <div className="flex justify-center gap-2 mt-12">
+        {/* Progress Indicators - Desktop only */}
+        <div className="hidden lg:flex justify-center gap-2 mt-12">
           {projects.map((_, index) => (
             <button
               key={index}
