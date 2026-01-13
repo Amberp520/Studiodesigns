@@ -74,7 +74,7 @@ const About = () => {
             <h3 className="text-lg font-semibold text-muted-foreground mb-4 opacity-0 animate-fade-up">
               How I Design Products
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {capabilities.map((capability, index) => (
                 <Link
                   key={capability.title}
