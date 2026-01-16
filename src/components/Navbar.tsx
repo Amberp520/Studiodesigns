@@ -39,7 +39,7 @@ const Navbar = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const whatsappLink = "https://wa.me/2349022518201?text=Hi%20Precious%2C%20I%27d%20love%20to%20discuss%20a%20project%20with%20you!";
+  const whatsappLink = "https://wa.me/2349165920038?text=Hi%20Precious%2C%20I%27d%20love%20to%20discuss%20a%20project%20with%20you!";
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#" className="text-2xl font-bold gradient-text">
-            Studio.
+            PE.
           </a>
 
           {/* Desktop Navigation */}
