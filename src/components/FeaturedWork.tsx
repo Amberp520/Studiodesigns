@@ -185,15 +185,15 @@ const FeaturedWork = () => {
           </p>
         </div>
 
-        {/* Mobile Layout - Vertical Stack */}
-        <div className="lg:hidden space-y-6">
+        {/* Mobile Layout - Vertical Stack (phones only) */}
+        <div className="md:hidden space-y-6">
           {projects.map((project, index) => (
             <MobileProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
 
-        {/* Desktop Layout - Original 3D Gallery */}
-        <div className="hidden lg:flex flex-col lg:flex-row gap-8">
+        {/* Tablet and Desktop Layout - Original 3D Gallery */}
+        <div className="hidden md:flex flex-col lg:flex-row gap-8">
           {/* Thumbnail Navigation - Left Side */}
           <div className="lg:w-24 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto pb-4 lg:pb-0 lg:max-h-[500px] scrollbar-hide">
             {projects.map((project, index) => (
@@ -313,8 +313,8 @@ const FeaturedWork = () => {
           </div>
         </div>
 
-        {/* Progress Indicators - Desktop only */}
-        <div className="hidden lg:flex justify-center gap-2 mt-12">
+        {/* Progress Indicators - Tablet and Desktop */}
+        <div className="hidden md:flex justify-center gap-2 mt-12">
           {projects.map((_, index) => (
             <button
               key={index}

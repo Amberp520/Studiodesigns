@@ -1,5 +1,6 @@
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getReadTimestamp } from "@/hooks/useReadTracking";
 
 interface BlogCardProps {
   title: string;
@@ -12,12 +13,25 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ title, excerpt, date, readTime, category, index, slug }: BlogCardProps) => {
+  const readTimestamp = getReadTimestamp(slug);
+  const isRead = !!readTimestamp;
+
   return (
     <Link to={`/blog/${slug}`}>
       <article 
-        className="group glass-card rounded-2xl p-6 hover-lift cursor-pointer opacity-0 animate-fade-up"
+        className={`group glass-card rounded-2xl p-6 hover-lift cursor-pointer opacity-0 animate-fade-up relative ${
+          isRead ? "border-primary/20" : ""
+        }`}
         style={{ animationDelay: `${index * 100}ms` }}
       >
+        {/* Read indicator */}
+        {isRead && (
+          <div className="absolute top-4 right-4 flex items-center gap-1.5 text-xs text-primary">
+            <CheckCircle className="w-3.5 h-3.5" />
+            <span>Read</span>
+          </div>
+        )}
+
         {/* Category Badge */}
         <div className="inline-flex px-3 py-1 rounded-full text-xs font-medium gradient-bg text-primary-foreground mb-4">
           {category}

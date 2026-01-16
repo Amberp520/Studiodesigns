@@ -23,6 +23,7 @@ import HealthWellnessApp from "./pages/projects/HealthWellnessApp";
 import BrandIdentitySystem from "./pages/projects/BrandIdentitySystem";
 import SaaSPlatform from "./pages/projects/SaaSPlatform";
 import TravelBookingApp from "./pages/projects/TravelBookingApp";
+import CV from "./pages/CV";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/projects/brand-identity-system" element={<BrandIdentitySystem />} />
           <Route path="/projects/saas-platform" element={<SaaSPlatform />} />
           <Route path="/projects/travel-booking-app" element={<TravelBookingApp />} />
+          <Route path="/cv" element={<CV />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

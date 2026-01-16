@@ -1,11 +1,11 @@
-import { MessageCircle, Twitter, Linkedin, Github, Instagram } from "lucide-react";
+import { MessageCircle, Linkedin, Github, Instagram, Figma } from "lucide-react";
 import { Button } from "./ui/button";
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/amberprecious998/", label: "Instagram" },
-  { icon: Linkedin, href: "https://linkedin.com/in/emenikeprecious", label: "LinkedIn" },
-  { icon: Github, href: "https://github.com/emenikeprecious", label: "GitHub" },
-  { icon: Twitter, href: "https://twitter.com/emenikeprecious", label: "Twitter" },
+  { icon: Instagram, href: "https://www.instagram.com/amberdesigns23/", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/precious-emenike-8650402b7/", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/Amberp520", label: "GitHub" },
+  { icon: Figma, href: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657", label: "Figma" },
 ];
 
 const Contact = () => {
