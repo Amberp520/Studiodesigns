@@ -73,7 +73,11 @@ const CV = () => {
               <ArrowLeft className="w-4 h-4" />
               Back to Portfolio
             </Link>
-            <Button variant="gradient" className="group w-fit">
+            <Button 
+              variant="gradient" 
+              className="group w-fit"
+              onClick={() => window.print()}
+            >
               <Download className="w-4 h-4" />
               Download PDF
             </Button>
@@ -93,7 +97,7 @@ const CV = () => {
                   <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1.5">
                       <Mail className="w-4 h-4" />
-                      contact@preciousemenike.com
+                      emenikep520@gmail.com
                     </span>
                     <span className="flex items-center gap-1.5">
                       <Phone className="w-4 h-4" />
@@ -101,7 +105,7 @@ const CV = () => {
                     </span>
                     <span className="flex items-center gap-1.5">
                       <MapPin className="w-4 h-4" />
-                      Lagos, Nigeria
+                      Enugu, Nigeria
                     </span>
                   </div>
                 </div>

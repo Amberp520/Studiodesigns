@@ -6,9 +6,13 @@ const Footer = () => {
     <footer className="py-8 border-t border-border/30">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <Link to="/" className="text-xl font-bold gradient-text">
-            PE.
+          <Link to="/" className="text-xl font-bold gradient-text font-display tracking-tight">
+            Precious<span className="text-primary">.</span>
           </Link>
+          
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Precious Emenike. Crafted with passion.
+          </p>
           
           {/* CV Link */}
           <Link 
@@ -18,18 +22,6 @@ const Footer = () => {
             <FileText className="w-4 h-4" />
             View My CV
           </Link>
-
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Precious Emenike. Crafted with passion.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Terms
-            </a>
-          </div>
         </div>
       </div>
     </footer>
