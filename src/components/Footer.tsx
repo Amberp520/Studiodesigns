@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <Link to="/" className="text-xl font-bold gradient-text font-display tracking-tight">
-            Precious<span className="text-primary">.</span>
+            Studio<span className="text-primary">.</span>
           </Link>
           
           <p className="text-sm text-muted-foreground">
