@@ -60,7 +60,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#" className="text-2xl font-bold gradient-text font-display tracking-tight">
-            Precious<span className="text-primary">.</span>
+            Studio<span className="text-primary">.</span>
           </a>
 
           {/* Desktop Navigation */}
