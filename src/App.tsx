@@ -24,6 +24,12 @@ import BrandIdentitySystem from "./pages/projects/BrandIdentitySystem";
 import SaaSPlatform from "./pages/projects/SaaSPlatform";
 import TravelBookingApp from "./pages/projects/TravelBookingApp";
 import CV from "./pages/CV";
+import FintechDashboardDesigns from "./pages/designs/FintechDashboardDesigns";
+import EcommerceDesigns from "./pages/designs/EcommerceDesigns";
+import HealthWellnessDesigns from "./pages/designs/HealthWellnessDesigns";
+import BrandIdentityDesigns from "./pages/designs/BrandIdentityDesigns";
+import SaaSPlatformDesigns from "./pages/designs/SaaSPlatformDesigns";
+import TravelBookingDesigns from "./pages/designs/TravelBookingDesigns";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +60,12 @@ const App = () => (
           <Route path="/projects/saas-platform" element={<SaaSPlatform />} />
           <Route path="/projects/travel-booking-app" element={<TravelBookingApp />} />
           <Route path="/cv" element={<CV />} />
+          <Route path="/designs/fintech-dashboard" element={<FintechDashboardDesigns />} />
+          <Route path="/designs/e-commerce" element={<EcommerceDesigns />} />
+          <Route path="/designs/health-wellness" element={<HealthWellnessDesigns />} />
+          <Route path="/designs/brand-identity" element={<BrandIdentityDesigns />} />
+          <Route path="/designs/saas-platform" element={<SaaSPlatformDesigns />} />
+          <Route path="/designs/travel-booking" element={<TravelBookingDesigns />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
