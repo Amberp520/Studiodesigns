@@ -1,4 +1,5 @@
-import { ArrowLeft, Download, Mail, Phone, MapPin, Linkedin, Github, Globe } from "lucide-react";
+import { ArrowLeft, Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
+import { Figma } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import Navbar from "@/components/Navbar";
@@ -68,19 +69,11 @@ const CV = () => {
       <main className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
+          <div className="mb-12">
             <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft className="w-4 h-4" />
               Back to Portfolio
             </Link>
-            <Button 
-              variant="gradient" 
-              className="group w-fit"
-              onClick={() => window.print()}
-            >
-              <Download className="w-4 h-4" />
-              Download PDF
-            </Button>
           </div>
 
           {/* CV Content */}
@@ -246,12 +239,12 @@ const CV = () => {
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://bloom-and-pixel.lovable.app"
+                  href="https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors"
                 >
-                  <Globe className="w-5 h-5" />
+                  <Figma className="w-5 h-5" />
                 </a>
               </div>
             </section>

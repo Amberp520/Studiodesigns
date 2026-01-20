@@ -14,11 +14,16 @@ interface Project {
   views: ProjectView[];
 }
 
-const projects: Project[] = [
+interface ProjectWithLink extends Project {
+  figmaUrl: string;
+}
+
+const projects: ProjectWithLink[] = [
   {
     title: "Fintech Dashboard",
     category: "Product Design",
     description: "Problem: Users struggled to understand investment performance. Solution: A fintech product with clear data visualization that helps users track investments, understand performance, and make informed financial decisions. Impact: 40% increase in user engagement.",
+    figmaUrl: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657",
     views: [
       { label: "Dashboard Overview", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" },
       { label: "Analytics View", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" },
@@ -29,6 +34,7 @@ const projects: Project[] = [
     title: "E-commerce Redesign",
     category: "Product Design",
     description: "Problem: High cart abandonment and poor product discovery. Solution: End-to-end product redesign focusing on streamlined checkout flow and personalized recommendations. Impact: 25% reduction in cart abandonment.",
+    figmaUrl: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657",
     views: [
       { label: "Homepage", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" },
       { label: "Product Page", image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&h=600&fit=crop" },
@@ -39,6 +45,7 @@ const projects: Project[] = [
     title: "Health & Wellness App",
     category: "Product Design",
     description: "Problem: Users lacked motivation to maintain healthy habits. Solution: A mobile product that gamifies wellness through personalized workout plans, nutrition tracking, and progress milestones. Impact: 60% user retention improvement.",
+    figmaUrl: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657",
     views: [
       { label: "Home Screen", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop" },
       { label: "Workout Tracker", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop" },
@@ -49,6 +56,7 @@ const projects: Project[] = [
     title: "Brand Identity System",
     category: "Design System",
     description: "Problem: Inconsistent brand representation across touchpoints. Solution: Comprehensive brand identity system with scalable components and clear guidelines. Impact: 50% faster design-to-development handoff.",
+    figmaUrl: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657",
     views: [
       { label: "Logo Variations", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" },
       { label: "Color System", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop" },
@@ -59,6 +67,7 @@ const projects: Project[] = [
     title: "SaaS Platform",
     category: "Product Design",
     description: "Problem: Teams struggled with fragmented collaboration tools. Solution: Unified SaaS platform with intuitive workflows, real-time updates, and seamless integrations. Impact: 35% improvement in team productivity.",
+    figmaUrl: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657",
     views: [
       { label: "Dashboard", image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=600&fit=crop" },
       { label: "Team View", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" },
@@ -69,6 +78,7 @@ const projects: Project[] = [
     title: "Travel Booking App",
     category: "Product Design",
     description: "Problem: Trip planning was overwhelming and time-consuming. Solution: A travel product that simplifies booking with smart recommendations and real-time updates. Impact: 45% increase in completed bookings.",
+    figmaUrl: "https://www.figma.com/files/team/1582066220419596752/recents-and-sharing?fuid=1582066218350051657",
     views: [
       { label: "Explore", image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=600&fit=crop" },
       { label: "Booking Flow", image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop" },
@@ -119,9 +129,14 @@ const FeaturedWork = () => {
     }
   };
 
-  // Mobile card component
-  const MobileProjectCard = ({ project, index }: { project: Project; index: number }) => (
-    <div className="glass-card rounded-2xl overflow-hidden">
+  // Mobile card component - now clickable to Figma
+  const MobileProjectCard = ({ project, index }: { project: ProjectWithLink; index: number }) => (
+    <a 
+      href={project.figmaUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform cursor-pointer"
+    >
       {/* Large project image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
@@ -160,15 +175,12 @@ const FeaturedWork = () => {
           ))}
         </div>
         
-        <Link 
-          to={`/projects/${project.title.toLowerCase().replace(/[&\s]+/g, '-')}`}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gradient-bg text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity group mt-2"
-        >
-          View Case Study
+        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gradient-bg text-primary-foreground font-medium text-sm group mt-2">
+          View in Figma
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-        </Link>
+        </span>
       </div>
-    </div>
+    </a>
   );
 
   return (
@@ -301,13 +313,15 @@ const FeaturedWork = () => {
                   ))}
                 </div>
 
-                <Link 
-                  to={`/projects/${activeProject.title.toLowerCase().replace(/[&\s]+/g, '-')}`}
+                <a 
+                  href={activeProject.figmaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-bg text-primary-foreground font-medium hover:opacity-90 transition-opacity group mt-4"
                 >
-                  View Case Study
+                  View in Figma
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
