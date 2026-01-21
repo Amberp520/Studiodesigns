@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowUpRight, Palette } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface ProjectView {
   label: string;
@@ -13,6 +13,7 @@ interface Project {
   description: string;
   views: ProjectView[];
   caseStudyUrl: string;
+  designUrl: string;
 }
 
 const projects: Project[] = [
@@ -21,6 +22,7 @@ const projects: Project[] = [
     category: "Product Design",
     description: "Problem: Users struggled to understand investment performance. Solution: A fintech product with clear data visualization that helps users track investments, understand performance, and make informed financial decisions. Impact: 40% increase in user engagement.",
     caseStudyUrl: "/projects/fintech-dashboard",
+    designUrl: "/designs/fintech-dashboard",
     views: [
       { label: "Dashboard Overview", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" },
       { label: "Analytics View", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" },
@@ -32,6 +34,7 @@ const projects: Project[] = [
     category: "Product Design",
     description: "Problem: High cart abandonment and poor product discovery. Solution: End-to-end product redesign focusing on streamlined checkout flow and personalized recommendations. Impact: 25% reduction in cart abandonment.",
     caseStudyUrl: "/projects/e-commerce-redesign",
+    designUrl: "/designs/e-commerce",
     views: [
       { label: "Homepage", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" },
       { label: "Product Page", image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&h=600&fit=crop" },
@@ -43,6 +46,7 @@ const projects: Project[] = [
     category: "Product Design",
     description: "Problem: Users lacked motivation to maintain healthy habits. Solution: A mobile product that gamifies wellness through personalized workout plans, nutrition tracking, and progress milestones. Impact: 60% user retention improvement.",
     caseStudyUrl: "/projects/health-wellness-app",
+    designUrl: "/designs/health-wellness",
     views: [
       { label: "Home Screen", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop" },
       { label: "Workout Tracker", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop" },
@@ -54,6 +58,7 @@ const projects: Project[] = [
     category: "Design System",
     description: "Problem: Inconsistent brand representation across touchpoints. Solution: Comprehensive brand identity system with scalable components and clear guidelines. Impact: 50% faster design-to-development handoff.",
     caseStudyUrl: "/projects/brand-identity-system",
+    designUrl: "/designs/brand-identity",
     views: [
       { label: "Logo Variations", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" },
       { label: "Color System", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop" },
@@ -65,6 +70,7 @@ const projects: Project[] = [
     category: "Product Design",
     description: "Problem: Teams struggled with fragmented collaboration tools. Solution: Unified SaaS platform with intuitive workflows, real-time updates, and seamless integrations. Impact: 35% improvement in team productivity.",
     caseStudyUrl: "/projects/saas-platform",
+    designUrl: "/designs/saas-platform",
     views: [
       { label: "Dashboard", image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=600&fit=crop" },
       { label: "Team View", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" },
@@ -76,6 +82,7 @@ const projects: Project[] = [
     category: "Product Design",
     description: "Problem: Trip planning was overwhelming and time-consuming. Solution: A travel product that simplifies booking with smart recommendations and real-time updates. Impact: 45% increase in completed bookings.",
     caseStudyUrl: "/projects/travel-booking-app",
+    designUrl: "/designs/travel-booking",
     views: [
       { label: "Explore", image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=600&fit=crop" },
       { label: "Booking Flow", image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop" },
@@ -88,6 +95,7 @@ const FeaturedWork = () => {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [activeViewIndex, setActiveViewIndex] = useState(1); // Center card starts in front
   const activeProject = projects[activeProjectIndex];
+  const navigate = useNavigate();
 
   const getCardStyle = (index: number) => {
     // Calculate position based on which card is active (in front)
@@ -126,10 +134,10 @@ const FeaturedWork = () => {
     }
   };
 
-  // Mobile card component - links to case study
+  // Mobile card component - links to design page on card click
   const MobileProjectCard = ({ project, index }: { project: Project; index: number }) => (
-    <Link 
-      to={project.caseStudyUrl}
+    <div 
+      onClick={() => navigate(project.designUrl)}
       className="block glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform cursor-pointer"
     >
       {/* Large project image */}
@@ -149,6 +157,11 @@ const FeaturedWork = () => {
         <span className="absolute top-4 right-4 text-sm font-medium text-white/80">
           {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
         </span>
+        {/* Click hint */}
+        <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 text-white text-xs">
+          <Palette className="w-3 h-3" />
+          Click for Designs
+        </div>
       </div>
       
       {/* Project info */}
@@ -170,12 +183,18 @@ const FeaturedWork = () => {
           ))}
         </div>
         
-        <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gradient-bg text-primary-foreground font-medium text-sm group mt-2">
-          View Case Study
-          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-        </span>
+        <div className="flex gap-3 pt-2">
+          <Link 
+            to={project.caseStudyUrl}
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gradient-bg text-primary-foreground font-medium text-sm group"
+          >
+            View Case Study
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </Link>
+        </div>
       </div>
-    </Link>
+    </div>
   );
 
   return (
@@ -236,10 +255,16 @@ const FeaturedWork = () => {
                 return (
                   <div
                     key={view.label}
-                    onClick={() => handleCardClick(index)}
-                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group w-[35%] aspect-square ${
-                      !isCenter ? "cursor-pointer hover:scale-[1.02]" : ""
-                    }`}
+                    onClick={() => {
+                      if (isCenter) {
+                        // Center card clicked - navigate to design page
+                        navigate(activeProject.designUrl);
+                      } else {
+                        // Side card clicked - rotate to center
+                        handleCardClick(index);
+                      }
+                    }}
+                    className={`absolute rounded-2xl overflow-hidden transition-all duration-700 ease-out group w-[35%] aspect-square cursor-pointer hover:scale-[1.02]`}
                     style={{
                       left: style.left,
                       right: style.right,
@@ -270,9 +295,17 @@ const FeaturedWork = () => {
                         }}
                       />
 
-                      {/* View label */}
-                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-white text-sm font-medium">{view.label}</span>
+                      {/* View label & click hint for center card */}
+                      <div className={`absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 ${isCenter ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
+                        <div className="flex items-center justify-between">
+                          <span className="text-white text-sm font-medium">{view.label}</span>
+                          {isCenter && (
+                            <span className="flex items-center gap-1.5 text-white/90 text-xs">
+                              <Palette className="w-3 h-3" />
+                              Click for Designs
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
