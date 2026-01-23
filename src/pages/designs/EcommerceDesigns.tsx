@@ -1,142 +1,163 @@
-import { ArrowLeft, ShoppingCart, Heart, Star, Search, User, Filter, ChevronDown, Plus, Minus, CreditCard, Truck, Shield, Package } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { ArrowLeft, ShoppingBag, Heart, Star, Search, User, ChevronRight, Plus, Minus, Truck, Shield, RotateCcw, CreditCard, Check } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const EcommerceDesigns = () => {
-  const [cartItems, setCartItems] = useState(3);
+  const navigate = useNavigate();
+
+  const handleBackToWork = () => {
+    navigate('/#work');
+  };
 
   return (
     <PageTransition>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16 bg-background">
+      <main className="min-h-screen pt-24 pb-16" style={{ background: '#faf9f7' }}>
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="mb-12">
-            <Link to="/projects/e-commerce-redesign" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6">
+            <Link to="/projects/e-commerce-redesign" className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors mb-6">
               <ArrowLeft className="w-4 h-4" />
               Back to Case Study
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              E-commerce <span className="gradient-text">Design Assets</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+              E-commerce <span className="text-amber-700">Redesign</span>
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Complete e-commerce UI kit with product pages, cart, and checkout flow designs.
+            <p className="text-stone-500 text-lg max-w-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Premium furniture shopping experience with elegant product displays and seamless checkout.
             </p>
           </div>
 
           {/* Screen 1: Homepage */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">1</span>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-amber-700 flex items-center justify-center text-white text-sm font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>1</span>
               Homepage Design
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
-              {/* Navbar */}
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-border">
-                <div className="flex items-center gap-8">
-                  <span className="text-2xl font-bold gradient-text">ShopFlow</span>
-                  <nav className="hidden md:flex gap-6">
-                    <a href="#" className="text-sm font-medium hover:text-primary transition-colors">New Arrivals</a>
-                    <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Women</a>
-                    <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Men</a>
-                    <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Accessories</a>
-                  </nav>
-                </div>
+            <div className="rounded-3xl overflow-hidden bg-white shadow-xl" style={{ border: '1px solid #e7e5e4' }}>
+              {/* Header */}
+              <div className="px-8 py-5 border-b border-stone-200 flex items-center justify-between">
+                <span className="text-2xl font-bold text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>Artisan Home</span>
+                <nav className="hidden md:flex gap-8">
+                  {["New Arrivals", "Living", "Bedroom", "Dining", "Office"].map((item) => (
+                    <a key={item} href="#" className="text-stone-600 hover:text-amber-700 transition-colors text-sm font-medium">{item}</a>
+                  ))}
+                </nav>
                 <div className="flex items-center gap-4">
-                  <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-                    <Search className="w-5 h-5 text-muted-foreground" />
-                  </button>
-                  <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-                    <User className="w-5 h-5 text-muted-foreground" />
-                  </button>
-                  <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center relative">
-                    <ShoppingCart className="w-5 h-5 text-muted-foreground" />
-                    <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full gradient-bg text-primary-foreground text-xs flex items-center justify-center">3</span>
-                  </button>
+                  <Search className="w-5 h-5 text-stone-400" />
+                  <User className="w-5 h-5 text-stone-400" />
+                  <div className="relative">
+                    <ShoppingBag className="w-5 h-5 text-stone-400" />
+                    <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-amber-700 text-white text-xs flex items-center justify-center">3</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Hero Banner */}
-              <div className="relative rounded-2xl overflow-hidden mb-8 h-80 bg-gradient-to-r from-primary/20 to-accent/20">
-                <div className="absolute inset-0 flex items-center p-12">
-                  <div className="max-w-md">
-                    <span className="text-sm font-medium text-primary mb-2 block">New Collection 2024</span>
-                    <h2 className="text-4xl font-bold mb-4">Summer Essentials</h2>
-                    <p className="text-muted-foreground mb-6">Discover the latest trends in fashion with our curated collection of summer must-haves.</p>
-                    <button className="px-8 py-3 rounded-full gradient-bg text-primary-foreground font-medium">Shop Now</button>
+              {/* Hero */}
+              <div className="relative h-[500px]" style={{ background: 'linear-gradient(135deg, #d4a574 0%, #c9956c 50%, #a67c52 100%)' }}>
+                <div className="absolute inset-0 flex items-center px-16">
+                  <div className="max-w-xl">
+                    <span className="text-amber-900/60 text-sm font-medium tracking-widest uppercase">New Collection 2024</span>
+                    <h2 className="text-6xl font-bold text-white mt-4 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      Crafted for Modern Living
+                    </h2>
+                    <p className="text-white/80 text-lg mt-4">Discover handcrafted furniture that brings warmth and elegance to every space.</p>
+                    <button className="mt-8 px-10 py-4 bg-stone-900 text-white rounded-full font-medium hover:bg-stone-800 transition-colors">
+                      Explore Collection
+                    </button>
                   </div>
                 </div>
-                <div className="absolute right-0 bottom-0 w-1/2 h-full opacity-20 bg-gradient-to-l from-primary/50" />
+                {/* Decorative chair silhouette */}
+                <div className="absolute right-20 bottom-0 w-96 h-96 opacity-20">
+                  <svg viewBox="0 0 200 200" className="w-full h-full">
+                    <ellipse cx="100" cy="180" rx="60" ry="15" fill="white" />
+                    <path d="M60 80 Q80 30 100 40 Q120 30 140 80 L150 180 L50 180 Z" fill="white" />
+                  </svg>
+                </div>
               </div>
 
               {/* Categories */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                {[
-                  { name: "Dresses", count: "240 items", emoji: "👗" },
-                  { name: "Tops", count: "180 items", emoji: "👕" },
-                  { name: "Shoes", count: "120 items", emoji: "👟" },
-                  { name: "Accessories", count: "95 items", emoji: "👜" },
-                ].map((cat, i) => (
-                  <div key={i} className="rounded-xl bg-muted/50 p-6 text-center hover:bg-muted transition-colors cursor-pointer">
-                    <span className="text-4xl block mb-3">{cat.emoji}</span>
-                    <h3 className="font-semibold">{cat.name}</h3>
-                    <p className="text-sm text-muted-foreground">{cat.count}</p>
-                  </div>
-                ))}
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-stone-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Shop by Category</h3>
+                <div className="grid grid-cols-4 gap-6">
+                  {[
+                    { name: "Living Room", count: "124 items", bg: "from-amber-100 to-amber-50" },
+                    { name: "Bedroom", count: "86 items", bg: "from-stone-200 to-stone-100" },
+                    { name: "Dining", count: "52 items", bg: "from-amber-200/50 to-amber-100/50" },
+                    { name: "Office", count: "38 items", bg: "from-stone-300/50 to-stone-200/50" },
+                  ].map((cat, i) => (
+                    <div key={i} className={`rounded-2xl bg-gradient-to-br ${cat.bg} p-6 cursor-pointer hover:shadow-lg transition-shadow`}>
+                      <div className="w-16 h-16 rounded-2xl bg-white/80 flex items-center justify-center mb-4">
+                        <span className="text-3xl">{["🛋️", "🛏️", "🪑", "💼"][i]}</span>
+                      </div>
+                      <h4 className="font-semibold text-stone-900">{cat.name}</h4>
+                      <p className="text-stone-500 text-sm">{cat.count}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Featured Products */}
-              <h3 className="text-xl font-bold mb-4">Featured Products</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { name: "Silk Midi Dress", price: "$189", rating: 4.8, image: "👗" },
-                  { name: "Linen Blazer", price: "$245", rating: 4.9, image: "🧥" },
-                  { name: "Canvas Sneakers", price: "$125", rating: 4.7, image: "👟" },
-                  { name: "Leather Tote", price: "$320", rating: 5.0, image: "👜" },
-                ].map((product, i) => (
-                  <div key={i} className="rounded-xl bg-muted/30 overflow-hidden group cursor-pointer">
-                    <div className="aspect-square bg-muted/50 flex items-center justify-center text-6xl relative">
-                      {product.image}
-                      <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-background/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Heart className="w-4 h-4 text-muted-foreground" />
-                      </button>
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-medium mb-1">{product.name}</h4>
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold">{product.price}</span>
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm">{product.rating}</span>
+              <div className="p-8 pt-0">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-bold text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>Best Sellers</h3>
+                  <a href="#" className="text-amber-700 text-sm font-medium flex items-center gap-1">View all <ChevronRight className="w-4 h-4" /></a>
+                </div>
+                <div className="grid grid-cols-4 gap-6">
+                  {[
+                    { name: "Oslo Armchair", price: "$1,299", oldPrice: "$1,599", rating: 4.9, reviews: 128 },
+                    { name: "Teak Dining Table", price: "$2,450", rating: 4.8, reviews: 89 },
+                    { name: "Luna Floor Lamp", price: "$485", rating: 4.7, reviews: 64 },
+                    { name: "Bergen Sofa", price: "$3,200", oldPrice: "$3,800", rating: 5.0, reviews: 156 },
+                  ].map((product, i) => (
+                    <div key={i} className="group cursor-pointer">
+                      <div className="aspect-square rounded-2xl bg-gradient-to-br from-stone-100 to-stone-50 relative overflow-hidden mb-4">
+                        <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-60">
+                          {["🪑", "🪵", "💡", "🛋️"][i]}
                         </div>
+                        <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <Heart className="w-5 h-5 text-stone-400" />
+                        </button>
+                        {product.oldPrice && (
+                          <span className="absolute top-4 left-4 px-3 py-1 bg-amber-700 text-white text-xs font-medium rounded-full">Sale</span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1 mb-2">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        <span className="text-sm font-medium text-stone-900">{product.rating}</span>
+                        <span className="text-sm text-stone-400">({product.reviews})</span>
+                      </div>
+                      <h4 className="font-semibold text-stone-900">{product.name}</h4>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="font-bold text-amber-700">{product.price}</span>
+                        {product.oldPrice && <span className="text-stone-400 line-through text-sm">{product.oldPrice}</span>}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </section>
 
           {/* Screen 2: Product Page */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">2</span>
-              Product Detail Page
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-amber-700 flex items-center justify-center text-white text-sm font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>2</span>
+              Product Detail
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
-              <div className="grid lg:grid-cols-2 gap-8">
+            <div className="rounded-3xl overflow-hidden bg-white shadow-xl p-8" style={{ border: '1px solid #e7e5e4' }}>
+              <div className="grid lg:grid-cols-2 gap-12">
                 {/* Product Images */}
                 <div className="space-y-4">
-                  <div className="aspect-square rounded-2xl bg-muted/50 flex items-center justify-center text-[150px]">
-                    👗
+                  <div className="aspect-square rounded-3xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #d4a574 0%, #c9956c 100%)' }}>
+                    <span className="text-[200px] opacity-80">🪑</span>
                   </div>
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-4 gap-3">
                     {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className={`aspect-square rounded-lg bg-muted/50 flex items-center justify-center text-2xl cursor-pointer ${i === 1 ? 'ring-2 ring-primary' : ''}`}>
-                        👗
+                      <div key={i} className={`aspect-square rounded-xl flex items-center justify-center cursor-pointer ${i === 1 ? 'ring-2 ring-amber-700' : ''}`} style={{ background: 'linear-gradient(135deg, #d4a574 0%, #c9956c 100%)' }}>
+                        <span className="text-4xl opacity-70">🪑</span>
                       </div>
                     ))}
                   </div>
@@ -145,93 +166,74 @@ const EcommerceDesigns = () => {
                 {/* Product Info */}
                 <div className="space-y-6">
                   <div>
-                    <span className="text-sm text-primary font-medium">Summer Collection</span>
-                    <h2 className="text-3xl font-bold mt-1">Silk Midi Dress</h2>
-                    <div className="flex items-center gap-2 mt-2">
+                    <span className="text-amber-700 text-sm font-medium">Oslo Collection</span>
+                    <h2 className="text-4xl font-bold text-stone-900 mt-2" style={{ fontFamily: 'Playfair Display, serif' }}>Oslo Armchair</h2>
+                    <div className="flex items-center gap-3 mt-3">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className={`w-4 h-4 ${star <= 4 ? 'fill-yellow-400 text-yellow-400' : 'text-muted'}`} />
+                          <Star key={star} className="w-5 h-5 fill-amber-400 text-amber-400" />
                         ))}
                       </div>
-                      <span className="text-sm text-muted-foreground">(128 reviews)</span>
+                      <span className="text-stone-600">128 reviews</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl font-bold">$189</span>
-                    <span className="text-xl text-muted-foreground line-through">$249</span>
-                    <span className="px-2 py-1 rounded bg-green-500/20 text-green-500 text-sm font-medium">-24%</span>
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl font-bold text-amber-700">$1,299</span>
+                    <span className="text-xl text-stone-400 line-through">$1,599</span>
+                    <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">Save $300</span>
                   </div>
 
-                  <p className="text-muted-foreground">
-                    Elegant silk midi dress perfect for summer occasions. Features a flattering A-line silhouette with delicate pleating and adjustable straps.
+                  <p className="text-stone-600 leading-relaxed">
+                    The Oslo Armchair combines Scandinavian simplicity with exceptional comfort. Crafted from sustainably sourced oak with premium leather upholstery, this piece brings timeless elegance to any living space.
                   </p>
 
                   {/* Color Selection */}
                   <div>
-                    <h4 className="font-medium mb-3">Color: <span className="text-muted-foreground">Dusty Rose</span></h4>
-                    <div className="flex gap-2">
+                    <h4 className="font-semibold text-stone-900 mb-3">Color: <span className="font-normal text-stone-600">Cognac Leather</span></h4>
+                    <div className="flex gap-3">
                       {[
-                        { color: "bg-pink-300", active: true },
-                        { color: "bg-sky-300", active: false },
-                        { color: "bg-slate-800", active: false },
-                        { color: "bg-amber-100", active: false },
+                        { color: "bg-amber-700", active: true },
+                        { color: "bg-stone-800" },
+                        { color: "bg-stone-400" },
+                        { color: "bg-amber-100" },
                       ].map((c, i) => (
-                        <button key={i} className={`w-10 h-10 rounded-full ${c.color} ${c.active ? 'ring-2 ring-offset-2 ring-primary' : ''}`} />
+                        <button key={i} className={`w-12 h-12 rounded-full ${c.color} ${c.active ? 'ring-2 ring-offset-2 ring-amber-700' : ''} hover:scale-110 transition-transform`} />
                       ))}
                     </div>
                   </div>
 
-                  {/* Size Selection */}
-                  <div>
-                    <div className="flex justify-between mb-3">
-                      <h4 className="font-medium">Size</h4>
-                      <button className="text-sm text-primary">Size Guide</button>
-                    </div>
-                    <div className="flex gap-2">
-                      {["XS", "S", "M", "L", "XL"].map((size, i) => (
-                        <button key={size} className={`w-12 h-12 rounded-lg border font-medium ${i === 2 ? 'border-primary bg-primary/10 text-primary' : 'border-border hover:border-primary'}`}>
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Quantity */}
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center border border-border rounded-lg">
-                      <button className="w-10 h-10 flex items-center justify-center hover:bg-muted">
-                        <Minus className="w-4 h-4" />
+                  {/* Quantity & Add to Cart */}
+                  <div className="flex gap-4">
+                    <div className="flex items-center border border-stone-200 rounded-full">
+                      <button className="w-12 h-12 flex items-center justify-center hover:bg-stone-50 rounded-l-full">
+                        <Minus className="w-4 h-4 text-stone-600" />
                       </button>
                       <span className="w-12 text-center font-medium">1</span>
-                      <button className="w-10 h-10 flex items-center justify-center hover:bg-muted">
-                        <Plus className="w-4 h-4" />
+                      <button className="w-12 h-12 flex items-center justify-center hover:bg-stone-50 rounded-r-full">
+                        <Plus className="w-4 h-4 text-stone-600" />
                       </button>
                     </div>
-                    <span className="text-sm text-muted-foreground">Only 5 left in stock</span>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex gap-3">
-                    <button className="flex-1 py-4 rounded-xl gradient-bg text-primary-foreground font-medium flex items-center justify-center gap-2">
-                      <ShoppingCart className="w-5 h-5" />
+                    <button className="flex-1 py-4 rounded-full bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors flex items-center justify-center gap-2">
+                      <ShoppingBag className="w-5 h-5" />
                       Add to Cart
                     </button>
-                    <button className="w-14 h-14 rounded-xl border border-border flex items-center justify-center hover:bg-muted">
-                      <Heart className="w-5 h-5" />
+                    <button className="w-14 h-14 rounded-full border border-stone-200 flex items-center justify-center hover:bg-stone-50">
+                      <Heart className="w-5 h-5 text-stone-600" />
                     </button>
                   </div>
 
                   {/* Trust Badges */}
-                  <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-stone-200">
                     {[
-                      { icon: Truck, label: "Free Shipping" },
-                      { icon: Shield, label: "Secure Payment" },
-                      { icon: Package, label: "Easy Returns" },
+                      { icon: Truck, label: "Free Shipping", desc: "On orders over $500" },
+                      { icon: Shield, label: "5 Year Warranty", desc: "Full coverage" },
+                      { icon: RotateCcw, label: "Easy Returns", desc: "30-day policy" },
                     ].map((item, i) => (
                       <div key={i} className="text-center">
-                        <item.icon className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">{item.label}</span>
+                        <item.icon className="w-6 h-6 mx-auto text-amber-700 mb-2" />
+                        <p className="font-medium text-stone-900 text-sm">{item.label}</p>
+                        <p className="text-stone-500 text-xs">{item.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -240,99 +242,133 @@ const EcommerceDesigns = () => {
             </div>
           </section>
 
-          {/* Screen 3: Checkout Flow */}
+          {/* Screen 3: Mobile */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">3</span>
-              Checkout Flow
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-amber-700 flex items-center justify-center text-white text-sm font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>3</span>
+              Mobile Experience
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
-              {/* Progress Steps */}
-              <div className="flex items-center justify-between mb-8 max-w-md mx-auto">
-                {["Cart", "Shipping", "Payment", "Confirm"].map((step, i) => (
-                  <div key={step} className="flex items-center">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${i <= 2 ? 'gradient-bg text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
-                      {i + 1}
+            <div className="flex flex-wrap gap-12 justify-center">
+              {/* iPhone Mockup 1 - Home */}
+              <div className="relative">
+                <div className="relative w-[300px] h-[620px] rounded-[55px] p-3" style={{ background: 'linear-gradient(145deg, #3d3d3d 0%, #1a1a1a 100%)', boxShadow: '0 50px 100px -20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)' }}>
+                  <div className="absolute inset-[3px] rounded-[52px]" style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.05)' }} />
+                  
+                  <div className="relative w-full h-full rounded-[48px] overflow-hidden bg-white">
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 rounded-full bg-black z-10" />
+                    
+                    <div className="px-6 pt-14">
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-xl font-bold text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>Artisan</span>
+                        <div className="flex gap-3">
+                          <Search className="w-5 h-5 text-stone-400" />
+                          <div className="relative">
+                            <ShoppingBag className="w-5 h-5 text-stone-400" />
+                            <span className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-amber-700 text-white text-[10px] flex items-center justify-center">3</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="rounded-2xl h-40 mb-6 flex items-center justify-center relative" style={{ background: 'linear-gradient(135deg, #d4a574 0%, #a67c52 100%)' }}>
+                        <div className="absolute inset-0 flex items-center px-5">
+                          <div>
+                            <p className="text-white/80 text-xs">New Season</p>
+                            <p className="text-white font-bold text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>Modern Living</p>
+                            <button className="mt-2 px-4 py-1.5 bg-white text-stone-900 rounded-full text-xs font-medium">Shop Now</button>
+                          </div>
+                        </div>
+                        <span className="absolute right-4 text-6xl opacity-60">🪑</span>
+                      </div>
+
+                      <p className="font-semibold text-stone-900 mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>Popular</p>
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { name: "Oslo Chair", price: "$1,299" },
+                          { name: "Bergen Sofa", price: "$3,200" },
+                        ].map((item, i) => (
+                          <div key={i} className="rounded-2xl overflow-hidden bg-stone-100">
+                            <div className="aspect-square flex items-center justify-center">
+                              <span className="text-5xl opacity-70">{["🪑", "🛋️"][i]}</span>
+                            </div>
+                            <div className="p-3 bg-white">
+                              <p className="font-medium text-stone-900 text-sm">{item.name}</p>
+                              <p className="text-amber-700 font-bold text-sm">{item.price}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    {i < 3 && <div className={`w-12 h-0.5 ${i < 2 ? 'bg-primary' : 'bg-muted'}`} />}
                   </div>
-                ))}
+                </div>
               </div>
 
-              <div className="grid lg:grid-cols-3 gap-8">
-                {/* Cart Items */}
-                <div className="lg:col-span-2 space-y-4">
-                  <h3 className="font-semibold">Your Cart (3 items)</h3>
-                  {[
-                    { name: "Silk Midi Dress", size: "M", color: "Rose", price: "$189", qty: 1, emoji: "👗" },
-                    { name: "Linen Blazer", size: "S", color: "Navy", price: "$245", qty: 1, emoji: "🧥" },
-                    { name: "Canvas Sneakers", size: "38", color: "White", price: "$125", qty: 1, emoji: "👟" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-4 p-4 rounded-xl bg-muted/30">
-                      <div className="w-20 h-20 rounded-lg bg-muted/50 flex items-center justify-center text-3xl">
-                        {item.emoji}
+              {/* iPhone Mockup 2 - Checkout */}
+              <div className="relative">
+                <div className="relative w-[300px] h-[620px] rounded-[55px] p-3" style={{ background: 'linear-gradient(145deg, #3d3d3d 0%, #1a1a1a 100%)', boxShadow: '0 50px 100px -20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)' }}>
+                  <div className="absolute inset-[3px] rounded-[52px]" style={{ background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.05)' }} />
+                  
+                  <div className="relative w-full h-full rounded-[48px] overflow-hidden bg-white">
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 rounded-full bg-black z-10" />
+                    
+                    <div className="px-6 pt-14">
+                      <div className="flex items-center gap-3 mb-6">
+                        <ArrowLeft className="w-5 h-5 text-stone-600" />
+                        <span className="font-semibold text-stone-900" style={{ fontFamily: 'Playfair Display, serif' }}>Checkout</span>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between">
-                          <h4 className="font-medium">{item.name}</h4>
-                          <span className="font-bold">{item.price}</span>
-                        </div>
-                        <p className="text-sm text-muted-foreground">Size: {item.size} • Color: {item.color}</p>
-                        <div className="flex items-center justify-between mt-2">
-                          <div className="flex items-center border border-border rounded">
-                            <button className="w-8 h-8 flex items-center justify-center hover:bg-muted">
-                              <Minus className="w-3 h-3" />
-                            </button>
-                            <span className="w-8 text-center text-sm">{item.qty}</span>
-                            <button className="w-8 h-8 flex items-center justify-center hover:bg-muted">
-                              <Plus className="w-3 h-3" />
-                            </button>
+
+                      {/* Progress */}
+                      <div className="flex items-center gap-2 mb-6">
+                        {["Cart", "Shipping", "Payment"].map((step, i) => (
+                          <div key={step} className="flex items-center gap-2">
+                            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium ${i <= 1 ? 'bg-amber-700 text-white' : 'bg-stone-200 text-stone-500'}`}>
+                              {i < 1 ? <Check className="w-3 h-3" /> : i + 1}
+                            </div>
+                            {i < 2 && <div className={`w-8 h-0.5 ${i < 1 ? 'bg-amber-700' : 'bg-stone-200'}`} />}
                           </div>
-                          <button className="text-sm text-muted-foreground hover:text-red-500">Remove</button>
+                        ))}
+                      </div>
+
+                      {/* Cart Item */}
+                      <div className="flex gap-3 p-3 rounded-xl bg-stone-50 mb-4">
+                        <div className="w-16 h-16 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #d4a574 0%, #c9956c 100%)' }}>
+                          <span className="text-2xl">🪑</span>
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-medium text-stone-900 text-sm">Oslo Armchair</p>
+                          <p className="text-stone-400 text-xs">Cognac • Qty: 1</p>
+                          <p className="text-amber-700 font-bold text-sm mt-1">$1,299</p>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
 
-                {/* Order Summary */}
-                <div className="lg:col-span-1">
-                  <div className="rounded-xl bg-muted/30 p-6 sticky top-24">
-                    <h3 className="font-semibold mb-4">Order Summary</h3>
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Subtotal</span>
-                        <span>$559.00</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Shipping</span>
-                        <span className="text-green-500">Free</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Tax</span>
-                        <span>$44.72</span>
-                      </div>
-                      <div className="pt-3 border-t border-border flex justify-between font-bold text-lg">
-                        <span>Total</span>
-                        <span>$603.72</span>
-                      </div>
-                    </div>
+                      {/* Payment Form */}
+                      <div className="space-y-3">
+                        <div className="p-4 rounded-xl border border-stone-200">
+                          <div className="flex items-center gap-3">
+                            <CreditCard className="w-5 h-5 text-amber-700" />
+                            <span className="text-stone-900 text-sm font-medium">•••• 4242</span>
+                            <span className="ml-auto text-stone-400 text-xs">Visa</span>
+                          </div>
+                        </div>
+                        
+                        <div className="pt-4 border-t border-stone-200 space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-stone-500">Subtotal</span>
+                            <span className="text-stone-900">$1,299</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-stone-500">Shipping</span>
+                            <span className="text-green-600">Free</span>
+                          </div>
+                          <div className="flex justify-between font-bold pt-2">
+                            <span className="text-stone-900">Total</span>
+                            <span className="text-amber-700">$1,299</span>
+                          </div>
+                        </div>
 
-                    {/* Promo Code */}
-                    <div className="mt-6">
-                      <div className="flex gap-2">
-                        <input type="text" placeholder="Promo code" className="flex-1 px-4 py-2 rounded-lg bg-background border border-border text-sm" />
-                        <button className="px-4 py-2 rounded-lg bg-muted font-medium text-sm">Apply</button>
+                        <button className="w-full py-4 rounded-full bg-stone-900 text-white font-medium text-sm">
+                          Place Order
+                        </button>
                       </div>
-                    </div>
-
-                    <button className="w-full mt-6 py-4 rounded-xl gradient-bg text-primary-foreground font-medium">
-                      Proceed to Checkout
-                    </button>
-
-                    <div className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                      <Shield className="w-4 h-4" />
-                      <span>Secure 256-bit SSL encryption</span>
                     </div>
                   </div>
                 </div>
@@ -340,96 +376,18 @@ const EcommerceDesigns = () => {
             </div>
           </section>
 
-          {/* Mobile Screens */}
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">4</span>
-              Mobile App Screens
-            </h2>
-            <div className="flex flex-wrap gap-8 justify-center">
-              {/* Mobile Product List */}
-              <div className="w-[280px] h-[580px] rounded-[40px] bg-foreground p-3 shadow-2xl">
-                <div className="w-full h-full rounded-[32px] bg-background overflow-hidden">
-                  <div className="px-6 py-2 flex justify-between text-xs">
-                    <span>9:41</span>
-                    <div className="flex gap-1"><span>📶</span><span>🔋</span></div>
-                  </div>
-                  <div className="p-5">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="font-semibold">New Arrivals</h3>
-                      <button className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                        <Filter className="w-4 h-4" />
-                      </button>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      {["👗", "🧥", "👟", "👜"].map((emoji, i) => (
-                        <div key={i} className="rounded-xl bg-muted/50 overflow-hidden">
-                          <div className="aspect-square flex items-center justify-center text-4xl bg-muted/30">
-                            {emoji}
-                          </div>
-                          <div className="p-2">
-                            <p className="text-xs font-medium truncate">Product Name</p>
-                            <p className="text-sm font-bold">$129</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile Cart */}
-              <div className="w-[280px] h-[580px] rounded-[40px] bg-foreground p-3 shadow-2xl">
-                <div className="w-full h-full rounded-[32px] bg-background overflow-hidden">
-                  <div className="px-6 py-2 flex justify-between text-xs">
-                    <span>9:41</span>
-                    <div className="flex gap-1"><span>📶</span><span>🔋</span></div>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-semibold mb-4">Shopping Cart</h3>
-                    <div className="space-y-3">
-                      {["👗", "🧥"].map((emoji, i) => (
-                        <div key={i} className="flex gap-3 p-3 rounded-xl bg-muted/30">
-                          <div className="w-16 h-16 rounded-lg bg-muted/50 flex items-center justify-center text-2xl">
-                            {emoji}
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-sm font-medium">Product</p>
-                            <p className="text-xs text-muted-foreground">Size: M</p>
-                            <p className="font-bold mt-1">$189</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-6 pt-4 border-t border-border">
-                      <div className="flex justify-between mb-4">
-                        <span className="text-muted-foreground">Total</span>
-                        <span className="font-bold">$434</span>
-                      </div>
-                      <button className="w-full py-3 rounded-xl gradient-bg text-primary-foreground font-medium text-sm">
-                        Checkout
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Back Link */}
+          {/* Back to Work */}
           <section className="text-center">
-            <div className="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4">Ready to Use</h2>
-              <p className="text-muted-foreground mb-6">
-                All components follow modern e-commerce UX patterns. Right-click to copy or save elements.
-              </p>
-              <Link
-                to="/projects/e-commerce-redesign"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-bg text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+            <div className="rounded-3xl p-12" style={{ background: 'linear-gradient(135deg, #d4a574 0%, #a67c52 100%)' }}>
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Explore More Projects</h3>
+              <p className="text-white/80 mb-6">Check out other design work in my portfolio</p>
+              <button 
+                onClick={handleBackToWork}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-stone-900 font-semibold hover:bg-stone-50 transition-colors"
               >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Study
-              </Link>
+                <ArrowLeft className="w-5 h-5" />
+                Back to Work
+              </button>
             </div>
           </section>
         </div>
