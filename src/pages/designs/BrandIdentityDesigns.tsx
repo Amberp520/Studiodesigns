@@ -1,12 +1,17 @@
-import { ArrowLeft, Eye, Download, Copy, Check } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowLeft, Copy, Check, Eye, Download, Palette, Type, Layers, Grid3X3 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const BrandIdentityDesigns = () => {
+  const navigate = useNavigate();
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
+
+  const handleBackToWork = () => {
+    navigate('/#work');
+  };
 
   const copyColor = (color: string) => {
     navigator.clipboard.writeText(color);
@@ -15,75 +20,75 @@ const BrandIdentityDesigns = () => {
   };
 
   const primaryColors = [
-    { name: "Primary", hex: "#7C3AED", hsl: "hsl(262, 83%, 58%)" },
-    { name: "Primary Light", hex: "#A78BFA", hsl: "hsl(262, 92%, 76%)" },
-    { name: "Primary Dark", hex: "#5B21B6", hsl: "hsl(262, 69%, 42%)" },
+    { name: "Deep Teal", hex: "#0D9488", rgb: "13, 148, 136" },
+    { name: "Teal Light", hex: "#14B8A6", rgb: "20, 184, 166" },
+    { name: "Teal Dark", hex: "#0F766E", rgb: "15, 118, 110" },
   ];
 
-  const secondaryColors = [
-    { name: "Accent", hex: "#06B6D4", hsl: "hsl(188, 94%, 43%)" },
-    { name: "Success", hex: "#10B981", hsl: "hsl(160, 84%, 39%)" },
-    { name: "Warning", hex: "#F59E0B", hsl: "hsl(38, 92%, 50%)" },
-    { name: "Error", hex: "#EF4444", hsl: "hsl(0, 84%, 60%)" },
+  const accentColors = [
+    { name: "Coral", hex: "#F97316", rgb: "249, 115, 22" },
+    { name: "Gold", hex: "#EAB308", rgb: "234, 179, 8" },
+    { name: "Rose", hex: "#F43F5E", rgb: "244, 63, 94" },
+    { name: "Violet", hex: "#8B5CF6", rgb: "139, 92, 246" },
   ];
 
   const neutralColors = [
-    { name: "Gray 900", hex: "#111827" },
-    { name: "Gray 700", hex: "#374151" },
-    { name: "Gray 500", hex: "#6B7280" },
-    { name: "Gray 300", hex: "#D1D5DB" },
-    { name: "Gray 100", hex: "#F3F4F6" },
+    { name: "Slate 900", hex: "#0F172A" },
+    { name: "Slate 700", hex: "#334155" },
+    { name: "Slate 500", hex: "#64748B" },
+    { name: "Slate 300", hex: "#CBD5E1" },
+    { name: "Slate 100", hex: "#F1F5F9" },
   ];
 
   return (
     <PageTransition>
       <Navbar />
-      <main className="min-h-screen pt-24 pb-16 bg-background">
+      <main className="min-h-screen pt-24 pb-16" style={{ background: 'linear-gradient(180deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)' }}>
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="mb-12">
-            <Link to="/projects/brand-identity-system" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6">
+            <Link to="/projects/brand-identity-system" className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-800 transition-colors mb-6">
               <ArrowLeft className="w-4 h-4" />
               Back to Case Study
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Brand Identity <span className="gradient-text">Design System</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>
+              Brand Identity <span className="text-teal-600">Design System</span>
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Complete brand identity kit with logos, colors, typography, and usage guidelines.
+            <p className="text-slate-500 text-lg max-w-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Complete brand identity kit with logos, colors, typography, and comprehensive usage guidelines.
             </p>
           </div>
 
           {/* Section 1: Logo System */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">1</span>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white text-sm font-bold">1</span>
               Logo System
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
+            <div className="rounded-3xl bg-white shadow-xl p-8" style={{ border: '1px solid #e2e8f0' }}>
               {/* Primary Logo */}
               <div className="mb-12">
-                <h3 className="font-semibold mb-4">Primary Logo</h3>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Primary Logo</h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="aspect-video rounded-xl bg-background border border-border flex items-center justify-center p-8">
+                  <div className="aspect-video rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-12">
                     <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center">
-                        <span className="text-3xl font-bold text-primary-foreground">N</span>
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shadow-lg shadow-teal-500/30">
+                        <span className="text-3xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                       </div>
                       <div>
-                        <span className="text-4xl font-bold">Nexus</span>
-                        <span className="text-4xl font-light text-primary">Labs</span>
+                        <span className="text-4xl font-bold text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>Vertex</span>
+                        <span className="text-4xl font-light text-teal-600" style={{ fontFamily: 'Clash Display, sans-serif' }}>Labs</span>
                       </div>
                     </div>
                   </div>
-                  <div className="aspect-video rounded-xl bg-foreground flex items-center justify-center p-8">
+                  <div className="aspect-video rounded-2xl bg-slate-900 flex items-center justify-center p-12">
                     <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-background flex items-center justify-center">
-                        <span className="text-3xl font-bold gradient-text">N</span>
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 flex items-center justify-center">
+                        <span className="text-3xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                       </div>
                       <div>
-                        <span className="text-4xl font-bold text-background">Nexus</span>
-                        <span className="text-4xl font-light text-primary-foreground">Labs</span>
+                        <span className="text-4xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>Vertex</span>
+                        <span className="text-4xl font-light text-teal-400" style={{ fontFamily: 'Clash Display, sans-serif' }}>Labs</span>
                       </div>
                     </div>
                   </div>
@@ -92,77 +97,75 @@ const BrandIdentityDesigns = () => {
 
               {/* Logo Variations */}
               <div className="mb-12">
-                <h3 className="font-semibold mb-4">Logo Variations</h3>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Logo Variations</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {/* Icon Only */}
-                  <div className="aspect-square rounded-xl bg-muted/30 flex items-center justify-center p-6">
-                    <div className="w-20 h-20 rounded-2xl gradient-bg flex items-center justify-center">
-                      <span className="text-4xl font-bold text-primary-foreground">N</span>
+                  <div className="aspect-square rounded-2xl bg-slate-50 flex items-center justify-center p-8 border border-slate-100">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shadow-lg shadow-teal-500/20">
+                      <span className="text-4xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                     </div>
                   </div>
                   {/* Horizontal */}
-                  <div className="aspect-square rounded-xl bg-muted/30 flex items-center justify-center p-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                        <span className="text-xl font-bold text-primary-foreground">N</span>
+                  <div className="aspect-square rounded-2xl bg-slate-50 flex items-center justify-center p-6 border border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
+                        <span className="text-xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                       </div>
-                      <span className="text-xl font-bold">Nexus</span>
+                      <span className="text-xl font-bold text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>Vertex</span>
                     </div>
                   </div>
                   {/* Stacked */}
-                  <div className="aspect-square rounded-xl bg-muted/30 flex items-center justify-center p-6">
+                  <div className="aspect-square rounded-2xl bg-slate-50 flex items-center justify-center p-6 border border-slate-100">
                     <div className="text-center">
-                      <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mx-auto mb-2">
-                        <span className="text-2xl font-bold text-primary-foreground">N</span>
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mx-auto mb-2">
+                        <span className="text-2xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                       </div>
-                      <span className="text-lg font-bold">Nexus Labs</span>
+                      <span className="text-lg font-bold text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>Vertex Labs</span>
                     </div>
                   </div>
                   {/* Minimal */}
-                  <div className="aspect-square rounded-xl bg-muted/30 flex items-center justify-center">
-                    <span className="text-5xl font-bold gradient-text">N</span>
+                  <div className="aspect-square rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100">
+                    <span className="text-6xl font-bold text-teal-600" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                   </div>
                 </div>
               </div>
 
               {/* Clear Space */}
               <div>
-                <h3 className="font-semibold mb-4">Clear Space & Minimum Size</h3>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Clear Space & Minimum Size</h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="rounded-xl bg-muted/30 p-8">
+                  <div className="rounded-2xl bg-slate-50 p-10 border border-slate-100">
                     <div className="relative inline-block">
-                      <div className="absolute inset-0 border-2 border-dashed border-primary/30 -m-8" />
+                      <div className="absolute inset-0 border-2 border-dashed border-teal-300 -m-8 rounded-xl" />
                       <div className="flex items-center gap-3 relative">
-                        <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
-                          <span className="text-xl font-bold text-primary-foreground">N</span>
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
+                          <span className="text-xl font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                         </div>
-                        <span className="text-2xl font-bold">Nexus Labs</span>
+                        <span className="text-2xl font-bold text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>Vertex Labs</span>
                       </div>
-                      <span className="absolute -top-6 left-0 text-xs text-primary">X</span>
-                      <span className="absolute -bottom-6 left-0 text-xs text-primary">X</span>
-                      <span className="absolute top-0 -left-6 text-xs text-primary">X</span>
-                      <span className="absolute top-0 -right-6 text-xs text-primary">X</span>
+                      <span className="absolute -top-7 left-0 text-xs text-teal-600 font-medium">X</span>
+                      <span className="absolute -bottom-7 left-0 text-xs text-teal-600 font-medium">X</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-12">Maintain clear space equal to the height of the "N" mark around all sides.</p>
+                    <p className="text-sm text-slate-500 mt-12">Maintain clear space equal to the height of the "V" mark.</p>
                   </div>
-                  <div className="rounded-xl bg-muted/30 p-8">
-                    <div className="flex items-center gap-6">
+                  <div className="rounded-2xl bg-slate-50 p-10 border border-slate-100">
+                    <div className="flex items-center gap-8">
                       <div className="text-center">
-                        <div className="w-6 h-6 rounded gradient-bg flex items-center justify-center mx-auto mb-2">
-                          <span className="text-xs font-bold text-primary-foreground">N</span>
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mx-auto mb-2">
+                          <span className="text-sm font-bold text-white" style={{ fontFamily: 'Clash Display, sans-serif' }}>V</span>
                         </div>
-                        <p className="text-xs text-muted-foreground">24px</p>
-                        <p className="text-xs text-green-500">✓ Min</p>
+                        <p className="text-xs text-slate-500">32px</p>
+                        <p className="text-xs text-emerald-600 font-medium">✓ Minimum</p>
                       </div>
-                      <div className="text-center">
-                        <div className="w-4 h-4 rounded gradient-bg flex items-center justify-center mx-auto mb-2">
-                          <span className="text-[8px] font-bold text-primary-foreground">N</span>
+                      <div className="text-center opacity-50">
+                        <div className="w-4 h-4 rounded bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mx-auto mb-2">
+                          <span className="text-[6px] font-bold text-white">V</span>
                         </div>
-                        <p className="text-xs text-muted-foreground">16px</p>
-                        <p className="text-xs text-red-500">✗ Too small</p>
+                        <p className="text-xs text-slate-500">16px</p>
+                        <p className="text-xs text-red-500 font-medium">✗ Too small</p>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-6">Minimum logo size is 24px for digital and 10mm for print.</p>
+                    <p className="text-sm text-slate-500 mt-8">Minimum logo size: 32px digital, 12mm print.</p>
                   </div>
                 </div>
               </div>
@@ -171,45 +174,55 @@ const BrandIdentityDesigns = () => {
 
           {/* Section 2: Color System */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">2</span>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white text-sm font-bold">2</span>
               Color System
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
+            <div className="rounded-3xl bg-white shadow-xl p-8" style={{ border: '1px solid #e2e8f0' }}>
               {/* Primary Colors */}
               <div className="mb-10">
-                <h3 className="font-semibold mb-4">Primary Colors</h3>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Primary Colors</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                   {primaryColors.map((color) => (
-                    <div key={color.name} className="rounded-xl overflow-hidden border border-border">
-                      <div className="h-24 cursor-pointer hover:opacity-90 transition-opacity" style={{ backgroundColor: color.hex }} onClick={() => copyColor(color.hex)} />
-                      <div className="p-4 bg-background">
-                        <div className="flex items-center justify-between">
-                          <span className="font-medium">{color.name}</span>
+                    <div key={color.name} className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                      <div 
+                        className="h-28 cursor-pointer hover:opacity-90 transition-opacity flex items-end p-4" 
+                        style={{ backgroundColor: color.hex }}
+                        onClick={() => copyColor(color.hex)}
+                      >
+                        <span className="text-white/80 text-sm font-medium">Click to copy</span>
+                      </div>
+                      <div className="p-5 bg-white">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-semibold text-slate-900">{color.name}</span>
                           {copiedColor === color.hex ? (
-                            <Check className="w-4 h-4 text-green-500" />
+                            <Check className="w-4 h-4 text-emerald-500" />
                           ) : (
-                            <Copy className="w-4 h-4 text-muted-foreground cursor-pointer" onClick={() => copyColor(color.hex)} />
+                            <Copy className="w-4 h-4 text-slate-400 cursor-pointer" onClick={() => copyColor(color.hex)} />
                           )}
                         </div>
-                        <p className="text-sm text-muted-foreground mt-1">{color.hex}</p>
-                        <p className="text-sm text-muted-foreground">{color.hsl}</p>
+                        <p className="text-sm text-slate-500 font-mono">{color.hex}</p>
+                        <p className="text-sm text-slate-400">RGB: {color.rgb}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Secondary Colors */}
+              {/* Accent Colors */}
               <div className="mb-10">
-                <h3 className="font-semibold mb-4">Secondary & Semantic Colors</h3>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Accent Colors</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {secondaryColors.map((color) => (
-                    <div key={color.name} className="rounded-xl overflow-hidden border border-border">
-                      <div className="h-16 cursor-pointer hover:opacity-90 transition-opacity" style={{ backgroundColor: color.hex }} onClick={() => copyColor(color.hex)} />
-                      <div className="p-3 bg-background">
-                        <p className="font-medium text-sm">{color.name}</p>
-                        <p className="text-xs text-muted-foreground">{color.hex}</p>
+                  {accentColors.map((color) => (
+                    <div key={color.name} className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+                      <div 
+                        className="h-20 cursor-pointer hover:opacity-90 transition-opacity" 
+                        style={{ backgroundColor: color.hex }}
+                        onClick={() => copyColor(color.hex)}
+                      />
+                      <div className="p-4 bg-white">
+                        <p className="font-medium text-slate-900 text-sm">{color.name}</p>
+                        <p className="text-xs text-slate-500 font-mono">{color.hex}</p>
                       </div>
                     </div>
                   ))}
@@ -218,14 +231,14 @@ const BrandIdentityDesigns = () => {
 
               {/* Neutral Colors */}
               <div className="mb-10">
-                <h3 className="font-semibold mb-4">Neutral Palette</h3>
-                <div className="flex rounded-xl overflow-hidden border border-border">
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Neutral Palette</h3>
+                <div className="flex rounded-2xl overflow-hidden border border-slate-100">
                   {neutralColors.map((color, i) => (
-                    <div key={color.name} className="flex-1 cursor-pointer hover:scale-y-110 transition-transform origin-bottom" onClick={() => copyColor(color.hex)}>
-                      <div className="h-20" style={{ backgroundColor: color.hex }} />
-                      <div className="p-2 bg-background text-center">
-                        <p className="text-xs font-medium">{color.name}</p>
-                        <p className="text-xs text-muted-foreground">{color.hex}</p>
+                    <div key={color.name} className="flex-1 cursor-pointer hover:scale-y-105 transition-transform origin-bottom" onClick={() => copyColor(color.hex)}>
+                      <div className="h-24" style={{ backgroundColor: color.hex }} />
+                      <div className="p-3 bg-white text-center border-t border-slate-100">
+                        <p className="text-xs font-medium text-slate-700">{color.name}</p>
+                        <p className="text-xs text-slate-400 font-mono">{color.hex}</p>
                       </div>
                     </div>
                   ))}
@@ -234,83 +247,60 @@ const BrandIdentityDesigns = () => {
 
               {/* Gradient */}
               <div>
-                <h3 className="font-semibold mb-4">Brand Gradient</h3>
-                <div className="h-24 rounded-xl gradient-bg mb-4" />
-                <div className="flex gap-4">
-                  <code className="text-sm bg-muted px-3 py-1.5 rounded-lg">
-                    linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%)
-                  </code>
-                </div>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Brand Gradient</h3>
+                <div className="h-28 rounded-2xl mb-4" style={{ background: 'linear-gradient(135deg, #0D9488 0%, #14B8A6 50%, #0F766E 100%)' }} />
+                <code className="text-sm bg-slate-100 text-slate-700 px-4 py-2 rounded-xl inline-block font-mono">
+                  linear-gradient(135deg, #0D9488 0%, #14B8A6 50%, #0F766E 100%)
+                </code>
               </div>
             </div>
           </section>
 
           {/* Section 3: Typography */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">3</span>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white text-sm font-bold">3</span>
               Typography System
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
+            <div className="rounded-3xl bg-white shadow-xl p-8" style={{ border: '1px solid #e2e8f0' }}>
               {/* Font Family */}
               <div className="mb-10">
-                <h3 className="font-semibold mb-4">Font Family</h3>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Font Families</h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="rounded-xl bg-muted/30 p-6">
-                    <p className="text-sm text-muted-foreground mb-2">Display / Headlines</p>
-                    <p className="text-4xl font-bold">Inter Bold</p>
-                    <p className="text-6xl font-bold mt-4">Aa</p>
-                    <p className="text-muted-foreground mt-4">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />1234567890!@#$%</p>
+                  <div className="rounded-2xl bg-slate-50 p-8 border border-slate-100">
+                    <p className="text-sm text-slate-500 mb-2">Display / Headlines</p>
+                    <p className="text-4xl font-bold text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>Clash Display</p>
+                    <p className="text-7xl font-bold text-slate-900 mt-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Aa</p>
+                    <p className="text-slate-500 mt-6 text-sm">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />1234567890!@#$%</p>
                   </div>
-                  <div className="rounded-xl bg-muted/30 p-6">
-                    <p className="text-sm text-muted-foreground mb-2">Body / UI</p>
-                    <p className="text-4xl">Inter Regular</p>
-                    <p className="text-6xl mt-4">Aa</p>
-                    <p className="text-muted-foreground mt-4">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />1234567890!@#$%</p>
+                  <div className="rounded-2xl bg-slate-50 p-8 border border-slate-100">
+                    <p className="text-sm text-slate-500 mb-2">Body / UI</p>
+                    <p className="text-4xl text-slate-900" style={{ fontFamily: 'Inter, sans-serif' }}>Inter</p>
+                    <p className="text-7xl text-slate-900 mt-4" style={{ fontFamily: 'Inter, sans-serif' }}>Aa</p>
+                    <p className="text-slate-500 mt-6 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />1234567890!@#$%</p>
                   </div>
                 </div>
               </div>
 
               {/* Type Scale */}
-              <div className="mb-10">
-                <h3 className="font-semibold mb-4">Type Scale</h3>
-                <div className="space-y-4">
+              <div>
+                <h3 className="text-slate-900 font-semibold mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Type Scale</h3>
+                <div className="space-y-3">
                   {[
                     { name: "Display", size: "text-6xl", px: "60px", use: "Hero sections" },
                     { name: "H1", size: "text-5xl", px: "48px", use: "Page titles" },
                     { name: "H2", size: "text-4xl", px: "36px", use: "Section headers" },
-                    { name: "H3", size: "text-3xl", px: "30px", use: "Card titles" },
-                    { name: "H4", size: "text-2xl", px: "24px", use: "Subsections" },
-                    { name: "Body Large", size: "text-lg", px: "18px", use: "Lead paragraphs" },
-                    { name: "Body", size: "text-base", px: "16px", use: "Default body text" },
-                    { name: "Small", size: "text-sm", px: "14px", use: "Captions, labels" },
+                    { name: "H3", size: "text-2xl", px: "24px", use: "Subsections" },
+                    { name: "Body", size: "text-base", px: "16px", use: "Paragraphs" },
+                    { name: "Small", size: "text-sm", px: "14px", use: "Captions" },
                   ].map((type) => (
-                    <div key={type.name} className="flex items-center gap-4 p-4 rounded-lg bg-muted/30">
+                    <div key={type.name} className="flex items-center gap-6 p-5 rounded-xl bg-slate-50 border border-slate-100">
                       <div className="w-24">
-                        <p className="text-sm font-medium">{type.name}</p>
-                        <p className="text-xs text-muted-foreground">{type.px}</p>
+                        <p className="font-semibold text-slate-900">{type.name}</p>
+                        <p className="text-xs text-slate-500">{type.px}</p>
                       </div>
-                      <p className={`flex-1 ${type.size} truncate`}>The quick brown fox</p>
-                      <p className="text-sm text-muted-foreground hidden md:block">{type.use}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Font Weights */}
-              <div>
-                <h3 className="font-semibold mb-4">Font Weights</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {[
-                    { weight: "Regular", class: "font-normal", value: "400" },
-                    { weight: "Medium", class: "font-medium", value: "500" },
-                    { weight: "Semibold", class: "font-semibold", value: "600" },
-                    { weight: "Bold", class: "font-bold", value: "700" },
-                  ].map((w) => (
-                    <div key={w.weight} className="rounded-xl bg-muted/30 p-4 text-center">
-                      <p className={`text-3xl ${w.class}`}>Aa</p>
-                      <p className="text-sm font-medium mt-2">{w.weight}</p>
-                      <p className="text-xs text-muted-foreground">{w.value}</p>
+                      <p className={`flex-1 ${type.size} text-slate-900 truncate`} style={{ fontFamily: 'Clash Display, sans-serif' }}>The quick brown fox</p>
+                      <p className="text-sm text-slate-400 hidden md:block">{type.use}</p>
                     </div>
                   ))}
                 </div>
@@ -320,76 +310,83 @@ const BrandIdentityDesigns = () => {
 
           {/* Section 4: Components */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-primary-foreground text-sm font-bold">4</span>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900" style={{ fontFamily: 'Clash Display, sans-serif' }}>
+              <span className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white text-sm font-bold">4</span>
               UI Components
             </h2>
-            <div className="glass-card rounded-2xl p-6 lg:p-8">
+            <div className="rounded-3xl bg-white shadow-xl p-8" style={{ border: '1px solid #e2e8f0' }}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Buttons */}
-                <div className="rounded-xl bg-muted/30 p-6">
-                  <h4 className="font-semibold mb-4">Buttons</h4>
+                <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                  <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Buttons</h4>
                   <div className="space-y-3">
-                    <button className="w-full py-3 rounded-xl gradient-bg text-primary-foreground font-medium">Primary</button>
-                    <button className="w-full py-3 rounded-xl bg-secondary text-secondary-foreground font-medium">Secondary</button>
-                    <button className="w-full py-3 rounded-xl border-2 border-primary text-primary font-medium">Outline</button>
-                    <button className="w-full py-3 rounded-xl text-primary font-medium hover:bg-primary/10">Ghost</button>
+                    <button className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold shadow-lg shadow-teal-500/30">Primary</button>
+                    <button className="w-full py-3 rounded-xl bg-slate-100 text-slate-700 font-semibold border border-slate-200">Secondary</button>
+                    <button className="w-full py-3 rounded-xl border-2 border-teal-500 text-teal-600 font-semibold">Outline</button>
                   </div>
                 </div>
 
                 {/* Inputs */}
-                <div className="rounded-xl bg-muted/30 p-6">
-                  <h4 className="font-semibold mb-4">Inputs</h4>
+                <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                  <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Inputs</h4>
                   <div className="space-y-3">
-                    <input type="text" placeholder="Default input" className="w-full px-4 py-3 rounded-xl bg-background border border-border" />
-                    <input type="text" placeholder="Focused" className="w-full px-4 py-3 rounded-xl bg-background border-2 border-primary" />
-                    <input type="text" placeholder="Error" className="w-full px-4 py-3 rounded-xl bg-background border-2 border-red-500" />
+                    <input type="text" placeholder="Default input" className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none text-slate-900" />
+                    <input type="text" placeholder="Disabled input" disabled className="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 cursor-not-allowed" />
                   </div>
                 </div>
 
                 {/* Cards */}
-                <div className="rounded-xl bg-muted/30 p-6">
-                  <h4 className="font-semibold mb-4">Cards</h4>
-                  <div className="rounded-xl bg-background border border-border p-4">
-                    <div className="w-full h-20 rounded-lg bg-muted mb-3" />
-                    <p className="font-medium">Card Title</p>
-                    <p className="text-sm text-muted-foreground">Card description goes here.</p>
+                <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                  <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Cards</h4>
+                  <div className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold">V</div>
+                      <div>
+                        <p className="font-semibold text-slate-900">Card Title</p>
+                        <p className="text-slate-500 text-xs">Subtitle text</p>
+                      </div>
+                    </div>
+                    <p className="text-slate-600 text-sm">Card content goes here with more details.</p>
                   </div>
                 </div>
 
                 {/* Badges */}
-                <div className="rounded-xl bg-muted/30 p-6">
-                  <h4 className="font-semibold mb-4">Badges</h4>
+                <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                  <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Badges</h4>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 rounded-full gradient-bg text-primary-foreground text-sm">Primary</span>
-                    <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-500 text-sm">Success</span>
-                    <span className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-500 text-sm">Warning</span>
-                    <span className="px-3 py-1 rounded-full bg-red-500/20 text-red-500 text-sm">Error</span>
+                    <span className="px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-sm font-medium">Default</span>
+                    <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">Success</span>
+                    <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-sm font-medium">Warning</span>
+                    <span className="px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm font-medium">Error</span>
                   </div>
                 </div>
 
                 {/* Avatars */}
-                <div className="rounded-xl bg-muted/30 p-6">
-                  <h4 className="font-semibold mb-4">Avatars</h4>
+                <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                  <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Avatars</h4>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-primary-foreground font-bold">JD</div>
-                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-medium">AB</div>
-                    <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground text-sm">CD</div>
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold">JD</div>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">AB</div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-semibold text-xs">CD</div>
+                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-medium">+5</div>
                   </div>
                 </div>
 
-                {/* Icons */}
-                <div className="rounded-xl bg-muted/30 p-6">
-                  <h4 className="font-semibold mb-4">Icon Style</h4>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
-                      <Eye className="w-6 h-6 text-primary-foreground" />
+                {/* Toggle */}
+                <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                  <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Toggles</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700 text-sm">Active</span>
+                      <div className="w-12 h-7 rounded-full bg-teal-500 p-1 cursor-pointer">
+                        <div className="w-5 h-5 rounded-full bg-white shadow-sm transform translate-x-5 transition-transform" />
+                      </div>
                     </div>
-                    <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
-                      <Download className="w-6 h-6 text-foreground" />
-                    </div>
-                    <div className="w-12 h-12 rounded-xl border-2 border-primary flex items-center justify-center">
-                      <Copy className="w-6 h-6 text-primary" />
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-700 text-sm">Inactive</span>
+                      <div className="w-12 h-7 rounded-full bg-slate-200 p-1 cursor-pointer">
+                        <div className="w-5 h-5 rounded-full bg-white shadow-sm transition-transform" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -397,20 +394,18 @@ const BrandIdentityDesigns = () => {
             </div>
           </section>
 
-          {/* Back Link */}
+          {/* Back to Work */}
           <section className="text-center">
-            <div className="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-4">Complete Brand System</h2>
-              <p className="text-muted-foreground mb-6">
-                All assets are designed for scalability across digital and print applications.
-              </p>
-              <Link
-                to="/projects/brand-identity-system"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-bg text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+            <div className="rounded-3xl p-12" style={{ background: 'linear-gradient(135deg, #0D9488 0%, #14B8A6 100%)' }}>
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'Clash Display, sans-serif' }}>Explore More Projects</h3>
+              <p className="text-white/80 mb-6">Check out other design work in my portfolio</p>
+              <button 
+                onClick={handleBackToWork}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-teal-700 font-semibold hover:bg-slate-50 transition-colors shadow-lg"
               >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Study
-              </Link>
+                <ArrowLeft className="w-5 h-5" />
+                Back to Work
+              </button>
             </div>
           </section>
         </div>
